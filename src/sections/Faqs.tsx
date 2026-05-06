@@ -33,8 +33,8 @@ export default function Faqs() {
     return (
         <section className="py-24">
             <div className="container">
+                
                 <div className="flex justify-center">
-                    <Tag>FAQs</Tag>
                 </div>
                 <h2 className="text-6xl font-medium mt-6 text-center max-w-xl mx-auto">
                     Questions? We&apos;ve got{" "}
