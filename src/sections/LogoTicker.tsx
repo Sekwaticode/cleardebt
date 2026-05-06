@@ -1,3 +1,6 @@
+"use client";
+
+import { Fragment } from "react";
 import quantumLogo from "@/assets/images/quantum.svg";
 import acmeLogo from "@/assets/images/acme-corp.svg";
 import echoValleyLogo from "@/assets/images/echo-valley.svg";
@@ -6,6 +9,8 @@ import outsideLogo from "@/assets/images/outside.svg";
 import apexLogo from "@/assets/images/apex.svg";
 import celestialLogo from "@/assets/images/celestial.svg";
 import twiceLogo from "@/assets/images/twice.svg";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 const logos = [
     { name: "Quantum", image: quantumLogo },
@@ -19,5 +24,37 @@ const logos = [
 ];
 
 export default function LogoTicker() {
-    return <div>Logo Ticker</div>;
+    return (
+        <section className="py-24 overflow-x-clip">
+            <div className="container">
+                <h3 className="text-center text-white text-xl">
+                    Already chosen by these market leaders
+                </h3>
+
+                <div className="flex overflow-hidden mt-12 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+                    <motion.div
+                        animate={{ x: "-50%" , }}
+                        transition={{
+                            duration: 60,
+                            ease: 'linear',
+                            repeat: Infinity
+                        }}
+                        className="flex flex-none gap-24 pr-24"
+                    >
+                        {Array.from({ length: 2 }).map((_, i) => (
+                            <Fragment key={i}>
+                                {logos.map((logo) => (
+                                    <Image
+                                        key={logo.name}
+                                        src={logo.image}
+                                        alt={logo.name}
+                                    />
+                                ))}
+                            </Fragment>
+                        ))}
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    );
 }
