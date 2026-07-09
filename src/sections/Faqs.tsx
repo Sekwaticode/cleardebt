@@ -7,24 +7,24 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const faqs = [
     {
-        question: "How is Layers different from other design tools?",
-        answer: "Unlike traditional design tools, Layers prioritizes speed and simplicity without sacrificing power. Our intelligent interface adapts to your workflow, reducing clicks and keeping you in your creative flow.",
+        question: "What is debt review removal?",
+        answer: "Debt review removal is the process of assisting qualifying consumers to exit debt review once they have met the necessary legal requirements. ClearDebt guides you through the process and helps ensure the required documentation is completed correctly.",
     },
     {
-        question: "Is there a learning curve?",
-        answer: "Layers is designed to feel intuitive from day one. Most designers are productive within hours, not weeks. We also provide interactive tutorials and comprehensive documentation to help you get started.",
+        question: "What is prescribed debt?",
+        answer: "In certain circumstances, debt may prescribe if it meets the requirements set out in South African law. ClearDebt can assess your situation and advise whether any of your debts may qualify for prescription.",
     },
     {
-        question: "How do you handle version control?",
-        answer: "Every change in Layers is automatically saved and versioned. You can review history, restore previous versions, and create named versions for important milestones.",
+        question: "Can you help remove judgments from my credit record?",
+        answer: "Yes. If you qualify, ClearDebt can assist with the judgment removal process and guide you through the necessary legal and administrative steps to help restore your credit profile.",
     },
     {
-        question: "Can I work offline?",
-        answer: "Yes! Layers includes a robust offline mode. Changes sync automatically when you're back online, so you can keep working anywhere.",
+        question: "How long does the process take?",
+        answer: "The timeframe depends on the specific service and your individual circumstances. After reviewing your case, our consultants will provide an estimated timeline and keep you informed throughout the process.",
     },
     {
-        question: "How does Layers handle collaboration?",
-        answer: "Layers is built for collaboration. You can invite team members to your projects, share feedback, and work together in real-time.",
+        question: "How do I get started?",
+        answer: "Getting started is simple. Contact ClearDebt for a free consultation, and one of our experienced consultants will assess your situation, explain your options, and recommend the most suitable solution for your needs.",
     },
 ];
 
@@ -38,7 +38,7 @@ export default function Faqs() {
                 </div>
                 <h2 className="text-6xl font-medium mt-6 text-center max-w-xl mx-auto">
                     Questions? We&apos;ve got{" "}
-                    <span className="text-lime-400">answers</span>
+                    <span className="text-fuchsia-400">answers</span>
                 </h2>
                 <div className="mt-12 flex flex-col gap-6 max-w-xl mx-auto">
                     {faqs.map((faq, faqIndex) => (
@@ -62,7 +62,7 @@ export default function Faqs() {
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     className={twMerge(
-                                        "feather feather-plus text-lime-400 flex-shrink-0 transition duration-300",
+                                        "feather feather-plus text-fuchsia-400 flex-shrink-0 transition duration-300",
                                         selectedIndex === faqIndex &&
                                             "rotate-45",
                                     )}

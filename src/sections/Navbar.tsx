@@ -23,11 +23,11 @@ export default function Navbar() {
                 <div className="border border-white/15 rounded-[27px]  bg-neutral-950/70 backdrop-blur ">
                     <div className="grid grid-cols-2 lg:grid-cols-3  px-4 md:pr-2 items-center ">
                         <div>
-                            <Image
+                            {/* <Image
                                 src={logoImage}
                                 alt="Layers logo"
                                 className="h-9 md:h-auto w-auto ml-2"
-                            />
+                            /> */}
                         </div>
                         <div className="lg:flex justify-center items-center hidden">
                             <nav className="flex gap-6 font-medium">
@@ -85,7 +85,7 @@ export default function Navbar() {
                                     )}
                                 ></line>
                             </svg>
-                            <Button
+                            {/* <Button
                                 variant="secondary"
                                 className="hidden md:inline-flex items-center"
                             >
@@ -97,7 +97,7 @@ export default function Navbar() {
                             >
                                 {" "}
                                 Sign Up{" "}
-                            </Button>
+                            </Button> */}
                         </div>
                     </div>
                     <AnimatePresence>
@@ -118,8 +118,7 @@ export default function Navbar() {
                                         {link.label}
                                     </a>
                                 ))}
-                                <Button variant="secondary">Log In</Button>
-                                <Button variant="primary">Sign Up</Button>
+                           
                                 </div>
                             </motion.div>
                         )}{" "}

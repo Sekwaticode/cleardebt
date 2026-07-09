@@ -1,42 +1,43 @@
 import Tag from "@/components/Tag";
-import figmaIcon from "@/assets/images/figma-logo.svg";
-import notionIcon from "@/assets/images/notion-logo.svg";
-import slackIcon from "@/assets/images/slack-logo.svg";
-import relumeIcon from "@/assets/images/relume-logo.svg";
-import framerIcon from "@/assets/images/framer-logo.svg";
-import githubIcon from "@/assets/images/github-logo.svg";
+
 import IntegrationColumn from "@/components/IntegrationsColumn";
 
 const integrations = [
     {
-        name: "Figma",
-        icon: figmaIcon,
-        description: "Figma is a collaborative interface design tool.",
+        description:
+            '"ClearDebt helped me regain control of my finances. The team was professional from start to finish."',
+        name: "Sarah Mokoena",
+        location: "Johannesburg",
     },
     {
-        name: "Notion",
-        icon: notionIcon,
-        description: "Notion is an all-in-one workspace for notes and docs.",
+        description:
+            '"I never thought improving my credit profile could be this straightforward. Highly recommended."',
+        name: "David Nkosi",
+        location: "Pretoria",
     },
     {
-        name: "Slack",
-        icon: slackIcon,
-        description: "Slack is a powerful team communication platform.",
+        description:
+            '"The advice I received gave me confidence to move forward financially. Thank you, ClearDebt!"',
+        name: "Lerato Jacobs",
+        location: "Cape Town",
     },
     {
-        name: "Relume",
-        icon: relumeIcon,
-        description: "Relume is a no-code website builder and design system.",
+        description:
+            '"Excellent service and clear communication throughout the entire process."',
+        name: "Thabo Naidoo",
+        location: "Durban",
     },
     {
-        name: "Framer",
-        icon: framerIcon,
-        description: "Framer is a professional website prototyping tool.",
+        description:
+            '"The team explained every step and made what felt overwhelming much easier to understand."',
+        name: "Amanda Williams",
+        location: "Gqeberha",
     },
     {
-        name: "GitHub",
-        icon: githubIcon,
-        description: "GitHub is the leading platform for code collaboration.",
+        description:
+            '"Professional, responsive, and genuinely committed to helping clients achieve financial freedom."',
+        name: "Michael van der Merwe",
+        location: "Bloemfontein",
     },
 ];
 
@@ -48,16 +49,13 @@ export default function Integrations() {
             <div className="container">
                 <div className="grid lg:grid-cols-2 items-center lg:gap-16">
                     <div>
-                        <Tag>Integrations</Tag>
+                        <Tag>Testimonials</Tag>
                         <h2 className="text-6xl font-medium mt-6">
-                            Plays well with{" "}
-                            <span className="text-lime-400">others</span>
+                            Our {" "}
+                            <span className="text-fuchsia-400">valuable clients</span> have been impacted by our work!
                         </h2>
 
-                        <p className="text-white/50 mt-4 text-lg">
-                            Layers seamlessly connects with your favourite tools
-                            making it wasy to collaborate platforms.
-                        </p>
+                
                     </div>
                     <div className="h-[400px] lg:h-[800px] mt-8 lg:mt-0 overflow-hidden grid  md:grid-cols-2 gap-4 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
                         <IntegrationColumn integrations={integrations} />

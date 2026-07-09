@@ -1,8 +1,8 @@
 "use client";
 
 import Button from "@/components/Button";
-import designExample1Image from "@/assets/images/design-example-1.png";
-import designExample2Image from "@/assets/images/design-example-2.png";
+import designExample1Image from "@/assets/images/Screenshot 2026-07-09 162521.png";
+import designExample2Image from "@/assets/images/Screenshot 2026-07-09 162556.png";
 import Image from "next/image";
 import Pointer from "@/components/Pointer";
 import { motion, useAnimate } from "framer-motion";
@@ -16,10 +16,10 @@ export default function Hero() {
     const [rightPointerScope, rightPointerAnimate] = useAnimate();
 
     useEffect(() => {
-        leftDesignanimate([
-            [leftDesignscope.current, { opacity: [1] }, { duration: 0.2 }],
-            [leftDesignscope.current, { y: 0, x: 0 }, { duration: 0.2 }],
-        ]);
+        // leftDesignanimate([
+        //     [leftDesignscope.current, { opacity: [1] }, { duration: 0.2 }],
+        //     [leftDesignscope.current, { y: 0, x: 0 }, { duration: 0.2 }],
+        // ]);
 
         leftPointerAnimate([
             [leftPointerScope.current, { opacity: 1 }, { duration: 0.2 }],
@@ -60,7 +60,7 @@ export default function Hero() {
             style={{ cursor: `url(${cursorYouImage.src}), auto` }}
         >
             <div className="container relative">
-                <motion.div
+                {/* <motion.div
                     ref={leftDesignscope}
                     initial={{ opacity: 0, y: 100, x: -100 }}
                     drag
@@ -71,7 +71,7 @@ export default function Hero() {
                         alt="Design example 1 image"
                         draggable="false"
                     />{" "}
-                </motion.div>
+                </motion.div> */}
                 <motion.div
                     ref={rightDesignscope}
                     initial={{ opacity: 0, x: 100, y: 100 }}

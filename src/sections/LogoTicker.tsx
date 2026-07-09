@@ -1,14 +1,12 @@
 "use client";
 
 import { Fragment } from "react";
-import quantumLogo from "@/assets/images/quantum.svg";
-import acmeLogo from "@/assets/images/acme-corp.svg";
-import echoValleyLogo from "@/assets/images/echo-valley.svg";
-import pulseLogo from "@/assets/images/pulse.svg";
-import outsideLogo from "@/assets/images/outside.svg";
-import apexLogo from "@/assets/images/apex.svg";
-import celestialLogo from "@/assets/images/celestial.svg";
-import twiceLogo from "@/assets/images/twice.svg";
+import quantumLogo from "@/assets/images/1-removebg-preview.png";
+import acmeLogo from "@/assets/images/2-removebg-preview.png";
+import echoValleyLogo from "@/assets/images/3-removebg-preview.png";
+import pulseLogo from "@/assets/images/4-removebg-preview.png";
+import outsideLogo from "@/assets/images/5-removebg-preview.png";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -18,9 +16,7 @@ const logos = [
     { name: "Echo Valley", image: echoValleyLogo },
     { name: "Pulse", image: pulseLogo },
     { name: "Outside", image: outsideLogo },
-    { name: "Apex", image: apexLogo },
-    { name: "Celestial", image: celestialLogo },
-    { name: "Twice", image: twiceLogo },
+  
 ];
 
 export default function LogoTicker() {
@@ -36,7 +32,7 @@ export default function LogoTicker() {
                     <motion.div
                         animate={{ x: "-50%" }}
                         transition={{
-                            duration: 60,
+                            duration: 30,
                             ease: "linear",
                             repeat: Infinity,
                         }}
