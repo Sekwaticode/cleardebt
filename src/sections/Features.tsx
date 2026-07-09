@@ -69,7 +69,7 @@ export default function Features() {
                         className="group"
                     >
                         <div className="aspect-video flex items-center justify-center">
-                            <p className="text-4xl font-extrabold text-black/20 group-hover:text-black/10 transition duration-500 text-center">
+                            <p className="text-4xl font-extrabold text-white/20 group-hover:text-white/10 transition duration-500 text-center">
                                 We&apos;ve acheived{" "}
                                 <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative">
                                     <span>incredible</span>
@@ -112,7 +112,7 @@ export default function Features() {
                     {features.map((feature) => (
                         <div
                             key={feature}
-                            className="bg-neutral-200 border border-white/10 inline-flex px-3 md:px-5 py-1.5 md:py-2 rounded-2xl gap-3 items-center hover:scale-105 transition duration-500 group"
+                            className="bg-neutral-900 border border-white/10 inline-flex px-3 md:px-5 py-1.5 md:py-2 rounded-2xl gap-3 items-center hover:scale-105 transition duration-500 group"
                         >
                             <span className="bg-lime-400 text-neutral-950 size-5 rounded-full inline-flex justify-center text-xl group-hover:rotate-45 transition duration-500">
                                 &#10038;

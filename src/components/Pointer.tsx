@@ -4,7 +4,7 @@ export default function Pointer(props: {
     name: string;
     color?: "red" | "blue";
 }) {
-    const {name, color} = props;
+    const { name, color } = props;
     return (
         <div className="relative">
             <svg
@@ -17,13 +17,18 @@ export default function Pointer(props: {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="feather feather-mouse-pointer text-black size-5"
+                className="text-white size-5"
             >
-                <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path>
-                <path d="M13 13l6 6"></path>
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
             </svg>
             <div className="absolute top-full left-full">
-                <div className={twMerge("inline flex rounded-full font-bold text-sm bg-blue-500 px-2 rounded-tl-none", color === 'red' && 'bg-red-500')}>
+                <div
+                    className={twMerge(
+                        "inline flex rounded-full font-bold text-sm bg-blue-500 px-2 rounded-tl-none",
+                        color === "red" && "bg-red-500",
+                    )}
+                >
                     {name}
                 </div>
             </div>

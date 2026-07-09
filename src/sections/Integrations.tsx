@@ -6,7 +6,6 @@ import relumeIcon from "@/assets/images/relume-logo.svg";
 import framerIcon from "@/assets/images/framer-logo.svg";
 import githubIcon from "@/assets/images/github-logo.svg";
 import IntegrationColumn from "@/components/IntegrationsColumn";
-import Faqs from "@/sections/Faqs";
 
 const integrations = [
     {
@@ -49,7 +48,16 @@ export default function Integrations() {
             <div className="container">
                 <div className="grid lg:grid-cols-2 items-center lg:gap-16">
                     <div>
-                        <Faqs />
+                        <Tag>Integrations</Tag>
+                        <h2 className="text-6xl font-medium mt-6">
+                            Plays well with{" "}
+                            <span className="text-lime-400">others</span>
+                        </h2>
+
+                        <p className="text-white/50 mt-4 text-lg">
+                            Layers seamlessly connects with your favourite tools
+                            making it wasy to collaborate platforms.
+                        </p>
                     </div>
                     <div className="h-[400px] lg:h-[800px] mt-8 lg:mt-0 overflow-hidden grid  md:grid-cols-2 gap-4 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
                         <IntegrationColumn integrations={integrations} />

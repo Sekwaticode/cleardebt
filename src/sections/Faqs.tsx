@@ -33,8 +33,8 @@ export default function Faqs() {
     return (
         <section className="py-24">
             <div className="container">
-                
                 <div className="flex justify-center">
+                    <Tag>FAQs</Tag>
                 </div>
                 <h2 className="text-6xl font-medium mt-6 text-center max-w-xl mx-auto">
                     Questions? We&apos;ve got{" "}
@@ -44,7 +44,7 @@ export default function Faqs() {
                     {faqs.map((faq, faqIndex) => (
                         <div
                             key={faq.question}
-                            className="bg-neutral-200 rounded-2xl border border-white/10 p-6 "
+                            className="bg-neutral-900 rounded-2xl border border-white/10 p-6"
                         >
                             <div
                                 className="flex justify-between items-center"
@@ -82,7 +82,7 @@ export default function Faqs() {
                                         exit={{ height: 0, marginTop: 0 }}
                                         className={twMerge("overflow-hidden")}
                                     >
-                                        <p className="text-white">
+                                        <p className="text-white/50">
                                             {faq.answer}
                                         </p>
                                     </motion.div>

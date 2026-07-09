@@ -34,9 +34,9 @@ export default function Introduction() {
 
                     <div className="text-4xl md:text-6xl lg:text-7xl text-center font-medium mt-10">
                         <span>Your creative process deserves better.</span>{" "}
-                        <span className="text-black/15">
+                        <span className="text-white/15">
                             {words.map((word, wordIndex) => (
-                                <span key={wordIndex} className={twMerge("transition duration-500 text-black/15",wordIndex < currentWord &&'text-black')}>{`${word} `}</span>
+                                <span key={wordIndex} className={twMerge("transition duration-500 text-white/15",wordIndex < currentWord &&'text-white')}>{`${word} `}</span>
                             ))}
                         </span>{" "}
                         <span className="text-lime-400 block">

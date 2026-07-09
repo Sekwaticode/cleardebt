@@ -7,7 +7,7 @@ import Image from "next/image";
 import Pointer from "@/components/Pointer";
 import { motion, useAnimate } from "framer-motion";
 import { useEffect } from "react";
-import cursorYouImage from "@/assets/images/cursor-you.svg"
+import cursorYouImage from "@/assets/images/cursor-you.svg";
 
 export default function Hero() {
     const [leftDesignscope, leftDesignanimate] = useAnimate();
@@ -55,7 +55,10 @@ export default function Hero() {
         ]);
     }, []);
     return (
-        <section className="py-24 overflow-x-clip" style={{cursor:`url(${cursorYouImage.src}), auto`}}>
+        <section
+            className="py-24 overflow-x-clip"
+            style={{ cursor: `url(${cursorYouImage.src}), auto` }}
+        >
             <div className="container relative">
                 <motion.div
                     ref={leftDesignscope}
@@ -85,31 +88,31 @@ export default function Hero() {
                     ref={leftPointerScope}
                     initial={{ opacity: 0, y: 100, x: -200 }}
                     className="absolute left-56 top-96"
-                    
                 >
-                    <Pointer name="Andrea" />
+                    <Pointer name="Credit Repair!" />
                 </motion.div>
                 <motion.div
                     ref={rightPointerScope}
                     initial={{ opacity: 0, x: 275, y: 100 }}
                     className="absolute right-80 top-4"
-                    
                 >
-                    <Pointer name="Bryan" color="red" />
+                    <Pointer name="Financial Freedom" color="red" />
                 </motion.div>
                 <div className="flex justify-center">
                     <div className="inline-flex py-1 px-3 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full text-neutral-950 font-semibold">
-                        $7.5M seed round raised
+                        Helping South Africans become debt free{" "}
                     </div>
                 </div>{" "}
                 <h1 className="text-6xl md:text-7xl lg:text-8xl font-medium text-center mt-6">
-                    Impactful design, created effortlessly
+                    Take Control of Your Debt, Rebuild Your Future{" "}
                 </h1>
-                <p className="text-center text-xl text-white mt-8 max-w-2xl mx-auto">
+                <p className="text-center text-xl text-white/50 mt-8 max-w-2xl mx-auto">
                     {" "}
-                    Design tools shouldn&apos;t slow you down. Layers combines
-                    powerful features with intuitive interface that keeps you in
-                    your creative flow.
+                    ClearDebt helps South Africans improve their financial
+                    future through debt review removal, prescribed debt
+                    assistance, credit profile updates, judgment removal, and
+                    expert credit guidance. Start your journey toward financial
+                    freedom with a team you can trust.
                 </p>
                 <form
                     className="flex border border-white/15 rounded-full p-2 mt-8 md:max-w-2xl mx-auto"
@@ -117,7 +120,7 @@ export default function Hero() {
                 >
                     <input
                         type="email"
-                        placeholder="Enter your email"
+                        placeholder="Get you credit assessment now!"
                         className="bg-transparent px-4 md:flex-1 w-full"
                     ></input>
                     <Button
@@ -126,7 +129,7 @@ export default function Hero() {
                         className="whitespace-nowrap"
                         size="sm"
                     >
-                        Sign Up
+                        Contact Us!
                     </Button>
                 </form>
             </div>

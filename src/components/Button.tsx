@@ -5,7 +5,7 @@ const classes = cva("border  h-12 rounded-full px-6 font-medium", {
     variants: {
         variant: {
             primary: "bg-lime-400 text-neutral-950 border-lime-400",
-            secondary: "border-white text-black bg-transparent",
+            secondary: "border-white text-white bg-transparent",
         },
         size:{
             sm: 'h-10', 
@@ -31,3 +31,4 @@ export default function Button(
         />
     );
 }
+ 
