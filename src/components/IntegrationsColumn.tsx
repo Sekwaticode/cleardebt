@@ -22,7 +22,7 @@ export default function IntegrationColumn(props: {
                 <Fragment key={i}>
                     {integrations.map((integration) => (
                         <div
-                        
+                                key={integration.id}
                             className="bg-neutral-900 border border-white/10 rounded-3xl p-6 "
                         >
                            
