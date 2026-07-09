@@ -4,36 +4,42 @@ import IntegrationColumn from "@/components/IntegrationsColumn";
 
 const integrations = [
     {
+        id: 1,
         description:
             '"ClearDebt helped me regain control of my finances. The team was professional from start to finish."',
         name: "Sarah Mokoena",
         location: "Johannesburg",
     },
     {
+        id: 2,
         description:
             '"I never thought improving my credit profile could be this straightforward. Highly recommended."',
         name: "David Nkosi",
         location: "Pretoria",
     },
     {
+        id: 2,
         description:
             '"The advice I received gave me confidence to move forward financially. Thank you, ClearDebt!"',
         name: "Lerato Jacobs",
         location: "Cape Town",
     },
     {
+        id: 3,
         description:
             '"Excellent service and clear communication throughout the entire process."',
         name: "Thabo Naidoo",
         location: "Durban",
     },
     {
+        id: 4,
         description:
             '"The team explained every step and made what felt overwhelming much easier to understand."',
         name: "Amanda Williams",
         location: "Gqeberha",
     },
     {
+        id: 5,
         description:
             '"Professional, responsive, and genuinely committed to helping clients achieve financial freedom."',
         name: "Michael van der Merwe",
@@ -51,11 +57,12 @@ export default function Integrations() {
                     <div>
                         <Tag>Testimonials</Tag>
                         <h2 className="text-6xl font-medium mt-6">
-                            Our {" "}
-                            <span className="text-fuchsia-400">valuable clients</span> have been impacted by our work!
+                            Our{" "}
+                            <span className="text-fuchsia-400">
+                                valuable clients
+                            </span>{" "}
+                            have been impacted by our work!
                         </h2>
-
-                
                     </div>
                     <div className="h-[400px] lg:h-[800px] mt-8 lg:mt-0 overflow-hidden grid  md:grid-cols-2 gap-4 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
                         <IntegrationColumn integrations={integrations} />
