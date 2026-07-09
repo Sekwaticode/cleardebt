@@ -1,7 +1,6 @@
 "use client";
 
 import Button from "@/components/Button";
-import designExample1Image from "@/assets/images/Screenshot 2026-07-09 162521.png";
 import designExample2Image from "@/assets/images/Screenshot 2026-07-09 162556.png";
 import Image from "next/image";
 import Pointer from "@/components/Pointer";
@@ -10,7 +9,7 @@ import { useEffect } from "react";
 import cursorYouImage from "@/assets/images/cursor-you.svg";
 
 export default function Hero() {
-    const [leftDesignscope, leftDesignanimate] = useAnimate();
+    // const [leftDesignscope, leftDesignanimate] = useAnimate();
     const [leftPointerScope, leftPointerAnimate] = useAnimate();
     const [rightDesignscope, rightDesignanimate] = useAnimate();
     const [rightPointerScope, rightPointerAnimate] = useAnimate();
