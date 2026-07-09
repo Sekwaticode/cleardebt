@@ -9,16 +9,12 @@ import { useEffect } from "react";
 import cursorYouImage from "@/assets/images/cursor-you.svg";
 
 export default function Hero() {
-    // const [leftDesignscope, leftDesignanimate] = useAnimate();
     const [leftPointerScope, leftPointerAnimate] = useAnimate();
     const [rightDesignscope, rightDesignanimate] = useAnimate();
     const [rightPointerScope, rightPointerAnimate] = useAnimate();
 
     useEffect(() => {
-        // leftDesignanimate([
-        //     [leftDesignscope.current, { opacity: [1] }, { duration: 0.2 }],
-        //     [leftDesignscope.current, { y: 0, x: 0 }, { duration: 0.2 }],
-        // ]);
+      
 
         leftPointerAnimate([
             [leftPointerScope.current, { opacity: 1 }, { duration: 0.2 }],
@@ -59,18 +55,7 @@ export default function Hero() {
             style={{ cursor: `url(${cursorYouImage.src}), auto` }}
         >
             <div className="container relative">
-                {/* <motion.div
-                    ref={leftDesignscope}
-                    initial={{ opacity: 0, y: 100, x: -100 }}
-                    drag
-                    className="absolute -left-32 top-16 hidden md:block"
-                >
-                    <Image
-                        src={designExample1Image}
-                        alt="Design example 1 image"
-                        draggable="false"
-                    />{" "}
-                </motion.div> */}
+          
                 <motion.div
                     ref={rightDesignscope}
                     initial={{ opacity: 0, x: 100, y: 100 }}

@@ -1,5 +1,4 @@
-import LogoImage from "@/assets/images/logo.svg";
-import Image from "next/image";
+
 
 const footerLinks = [
     { href: "#", label: "Contact" },
