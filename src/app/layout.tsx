@@ -11,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     title: "Clear Debt",
-    description: "Expert Debt solutions",
+    description: "",
 };
 
 export default function RootLayout({
@@ -21,10 +21,18 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-          <body
-    className={`${inter.variable} font-sans antialiased text-white bg-neutral-900`}
->
-    {children}
+        <body className={`${inter.variable} font-sans antialiased text-white relative`}>
+  <div
+    className="
+      fixed
+      inset-0
+      -z-10
+      pointer-events-none
+      [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]
+    "
+  />
+
+  {children}
 </body>
         </html>
     );

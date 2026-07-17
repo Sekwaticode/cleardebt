@@ -2,18 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
 body {
-  position: relative;
-  background: #171717; /* neutral-900 */
+    min-height: 100%;
+}
+
+body {
+    position: relative;
+    color: white;
+    background: radial-gradient(
+        125% 125% at 50% 10%,
+        #000 40%,
+        #6633ee 100%
+    );
 }
 
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: #d946ef;
-  opacity: 0.2;
-  filter: blur(100px);
-  pointer-events: none;
-  z-index: -1;
+    content: "";
+    position: fixed;
+    inset: 0;
+    opacity: 0.2;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: -1;
 }
