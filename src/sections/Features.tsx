@@ -7,6 +7,7 @@ import avatar3 from "@/assets/images/avatar-florence-shaw.jpg";
 import avatar4 from "@/assets/images/avatar-owen-garcia.jpg";
 import Avatar from "@/components/Avatar";
 import Key from "@/components/Key";
+import MagicBento from "@/components/MagicBento";
 
 const features = [
     "Debt Review Removal",
@@ -31,7 +32,6 @@ export default function Features() {
                 </h2>
 
                 <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
                     <FeatureCard
                         title="Helping real South Africans who are just like you!"
                         description="We reach South Africans from Mbombela to Stellenbosch, relieving them from financial stress"
@@ -39,15 +39,27 @@ export default function Features() {
                     >
                         <div className="aspect-video flex items-center justify-center">
                             <Avatar className="z-40">
-                                <Image src={avatar1} alt="Avatar1" className="rounded-full" />
+                                <Image
+                                    src={avatar1}
+                                    alt="Avatar1"
+                                    className="rounded-full"
+                                />
                             </Avatar>
                             <Avatar className="-ml-6 border-indigo-500 z-30">
-                                <Image src={avatar2} alt="Avatar2" className="rounded-full" />
+                                <Image
+                                    src={avatar2}
+                                    alt="Avatar2"
+                                    className="rounded-full"
+                                />
                             </Avatar>
-                            <Avatar className="-ml-6 border-amber-500 z-20">
-                                <Image src={avatar3} alt="Avatar3" className="rounded-full" />
+                            <Avatar className="-ml-6 border-indigo-500 z-20">
+                                <Image
+                                    src={avatar3}
+                                    alt="Avatar3"
+                                    className="rounded-full"
+                                />
                             </Avatar>
-                            <Avatar className="-ml-6 border-transparent group-hover:border-green-500 transition">
+                            <Avatar className="-ml-6 border-transparent group-hover:border-indigo-500 transition">
                                 <div className="size-full bg-neutral-700 rounded-full inline-flex items-center justify-center relative">
                                     <Image
                                         src={avatar4}
@@ -55,7 +67,10 @@ export default function Features() {
                                         className="absolute size-full rounded-full opacity-0 group-hover:opacity-100 transition"
                                     />
                                     {Array.from({ length: 3 }).map((_, i) => (
-                                        <span key={i} className="size-1.5 rounded-full bg-white inline-flex"></span>
+                                        <span
+                                            key={i}
+                                            className="size-1.5 rounded-full bg-white inline-flex"
+                                        ></span>
                                     ))}
                                 </div>
                             </Avatar>
@@ -106,7 +121,19 @@ export default function Features() {
                         </div>
                     </FeatureCard>
                 </div>
-
+                <MagicBento
+                    textAutoHide={true}
+                    enableStars
+                    enableSpotlight
+                    enableBorderGlow={true}
+                    enableTilt={false}
+                    enableMagnetism={false}
+                    clickEffect
+                    spotlightRadius={400}
+                    particleCount={12}
+                    glowColor="132, 0, 255"
+                    disableAnimations={false}
+                />
                 <div className="mt-8 flex flex-wrap gap-3 justify-center">
                     {features.map((feature) => (
                         <div
