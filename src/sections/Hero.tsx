@@ -1,8 +1,6 @@
 "use client";
 
 import Button from "@/components/Button";
-import designExample2Image from "@/assets/images/Screenshot 2026-07-09 162556.png";
-import Image from "next/image";
 import Pointer from "@/components/Pointer";
 import { motion, useAnimate } from "framer-motion";
 import { useEffect } from "react";
