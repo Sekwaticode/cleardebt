@@ -121,6 +121,8 @@ export default function Features() {
                         </div>
                     </FeatureCard>
                 </div>
+
+                
                 <MagicBento
                     textAutoHide={true}
                     enableStars

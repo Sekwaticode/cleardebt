@@ -58,7 +58,6 @@ const cardData = [
   backButtonText="Previous"
   nextButtonText="Next"
 >
- import { Step } from "./Stepper";
 
   <Step>
     <div className="space-y-4 text-center py-10">
@@ -66,11 +65,7 @@ const cardData = [
         Free Credit Check
       </h2>
 
-      <p className="text-neutral-400 max-w-xl mx-auto">
-        We start by offering you a free credit report check. This helps us
-        understand your financial position and identify areas where we can
-        assist.
-      </p>
+
     </div>
   </Step>
 
@@ -79,11 +74,6 @@ const cardData = [
       <h2 className="text-3xl font-bold">
         Debt & Financial Analysis
       </h2>
-
-      <p className="text-neutral-400 max-w-xl mx-auto">
-        Our team carefully analyzes your debts and financial standing,
-        looking at your obligations, income and overall credit health.
-      </p>
     </div>
   </Step>
 
@@ -93,10 +83,7 @@ const cardData = [
         Tailored Assistance Plan
       </h2>
 
-      <p className="text-neutral-400 max-w-xl mx-auto">
-        Once we have the full picture, we inform you of the best solutions
-        and services we can provide to help you reduce or remove your debts.
-      </p>
+   
     </div>
   </Step>
 
@@ -106,11 +93,6 @@ const cardData = [
         Documentation & Quotation
       </h2>
 
-      <p className="text-neutral-400 max-w-xl mx-auto">
-        We then send you all the necessary documents together with a clear
-        quotation, so you know exactly how the process works and what to
-        expect.
-      </p>
     </div>
   </Step>
 
@@ -120,10 +102,6 @@ const cardData = [
         Secure Debit Order Setup
       </h2>
 
-      <p className="text-neutral-400 max-w-xl mx-auto">
-        Finally, we send you a debit order for your approval, ensuring a
-        simple and secure way to manage your payments with us.
-      </p>
     </div>
   </Step>
 </Stepper>
