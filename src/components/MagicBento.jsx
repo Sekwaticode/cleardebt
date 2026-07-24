@@ -61,27 +61,23 @@ const cardData = [
 
   <Step>
     <div className="space-y-4 text-center py-10">
-      <h2 className="text-3xl font-bold">
+      <h2 className="magic-bento-card__header">
         Free Credit Check
       </h2>
-
-
     </div>
   </Step>
 
   <Step>
     <div className="space-y-4 text-center py-10">
-      <h2 className="text-3xl font-bold">
-        Debt & Financial Analysis
-      </h2>
+      <h2 className="magic-bento-card__header">
+Document Collection      </h2>
     </div>
   </Step>
 
   <Step>
     <div className="space-y-4 text-center py-10">
-      <h2 className="text-3xl font-bold">
-        Tailored Assistance Plan
-      </h2>
+      <h2 className="magic-bento-card__header">
+Application Preparation      </h2>
 
    
     </div>
@@ -89,18 +85,16 @@ const cardData = [
 
   <Step>
     <div className="space-y-4 text-center py-10">
-      <h2 className="text-3xl font-bold">
-        Documentation & Quotation
-      </h2>
+      <h2 className="magic-bento-card__header">
+Submission & Follow Up      </h2>
 
     </div>
   </Step>
 
   <Step>
     <div className="space-y-4 text-center py-10">
-      <h2 className="text-3xl font-bold">
-        Secure Debit Order Setup
-      </h2>
+      <h2 className="magic-bento-card__header">
+Results & Assistance      </h2>
 
     </div>
   </Step>
