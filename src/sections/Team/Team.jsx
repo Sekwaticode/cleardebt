@@ -1,38 +1,43 @@
 import "./Team.css";
+import Tag from "@/components/Tag"
+import Lihle from "@/assets/images/team-lihle.jpg"
+import Tasmin from "@/assets/images/team-tasmin.jpg"
+import Zelda from "@/assets/images/team-zelda.jpg"
+import Angie from "@/assets/images/team-angie.jpg"
+import Image from "next/image";
 
 const teamMembers = [
   {
     id: 1,
-    name: "Sophia Diggs",
-    role: "Co Founder and CEO",
+    name: "Lihle",
+    role: "Debt Specialist",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, accusamus fuga.",
-    image: "/images/avatar 2.png",
-    linkedin: "#",
-    github: "#",
-    email: "#",
+      "Helps clients understand debt review, create affordable repayment plans, and take the first step toward financial freedom.",
+    image: Lihle,
   },
   {
     id: 2,
-    name: "Lana Ward",
-    role: "Content Head",
+    name: "Tasmin",
+    role: "Debt Counsellor",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, harum recusandae!",
-    image: "/images/avatar 3.png",
-    linkedin: "#",
-    github: "#",
-    email: "#",
+      "Provides compassionate guidance, assesses financial situations, and supports clients throughout every stage of debt review.",
+    image: Tasmin,
   },
   {
     id: 3,
-    name: "Jackson Cano",
-    role: "Sales Manager",
+    name: "Zelda",
+    role: "Marketing Manager",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel magni distinctio quae.",
-    image: "/images/avatar 4.png",
-    linkedin: "#",
-    github: "#",
-    email: "#",
+      "Leads marketing initiatives, builds brand awareness, and connects more South Africans with trusted debt relief solutions.",
+    image: Zelda,
+  },
+  {
+    id: 4,
+    name: "Angie",
+    role: "Debt Advisor",
+    description:
+      "Works closely with clients to explain available options and recommend practical solutions for managing outstanding debt.",
+    image: Angie,
   },
 ];
 
@@ -40,14 +45,17 @@ export default function Team() {
   return (
     <div className="center">
       <div className="team">
-        <div className="title">Our Team</div>
-
+        <Tag>Our Team</Tag>
+<h2 className="text-6xl font-medium mt-6 text-center max-w-xl mx-auto">
+                   Our Team of 
+                    <span className="text-fuchsia-400"> expert</span> debt relief specialists
+                </h2>
         <div className="profiles">
           {teamMembers.map((member) => (
             <div className="profile" key={member.id}>
               <div className="card">
                 <div className="head">
-                  <img src={member.image} alt={member.name} />
+                  <Image src={member.image} alt={member.name} />
 
                   <div className="name">{member.name}</div>
                 </div>
@@ -58,30 +66,11 @@ export default function Team() {
                   {member.description}
                 </div>
 
-                <div className="icons">
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fa-brands fa-linkedin"></i>
-                  </a>
-
-                  <a
-                    href={member.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fa-brands fa-github"></i>
-                  </a>
-
-                  <a href={member.email}>
-                    <i className="fa-solid fa-envelope"></i>
-                  </a>
-                </div>
+                
               </div>
 
-              <img
+              <Image
+  className="w-40 h-40 rounded-full object-cover border-4 border-fuchsia-400 shadow-xl"
                 src={member.image}
                 alt={member.name}
                 id="picture"

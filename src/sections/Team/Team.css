@@ -50,12 +50,15 @@
   transition: 0.5s ease-in-out;
 }
 
-.profile img {
-  width: 40px;
-  height: 40px;
+#picture {
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
+  object-fit: cover;
   position: relative;
   z-index: 2;
+  border: 5px solid #F0ABFC;
+  transition: 0.3s;
 }
 
 .details {
@@ -170,7 +173,6 @@
 
 .card::before {
   position: absolute;
-  content: "location_pin";
   font-family: "Material Icons";
   color: var(--primary);
   font-size: 85px;
@@ -212,5 +214,141 @@
 
 .profile:nth-child(odd) {
   --secondary: rgb(0, 0, 0);
-  --primary: rgb(255, 124, 10);
+  --primary: rgb(0, 0, 0);
+}
+
+/* ===========================
+   TABLETS
+=========================== */
+@media (max-width: 1024px) {
+  .profiles {
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .profile {
+    min-width: 300px;
+    margin: 10px;
+  }
+
+  .card {
+    width: 300px;
+  }
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+@media (max-width: 768px) {
+  .team {
+    padding: 0 20px;
+  }
+
+  .profiles {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .profile {
+    width: 100%;
+    max-width: 360px;
+    min-width: unset;
+    margin: 0;
+    max-height: none;
+    padding-top: 0;
+  }
+
+  #picture {
+    width: 140px;
+    height: 140px;
+  }
+
+  .card {
+    display: flex;
+    width: 100%;
+    height: auto;
+    min-height: 260px;
+    margin-bottom: 20px;
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  /* Remove hover animation on touch devices */
+  .profile:hover {
+    max-height: none;
+  }
+
+  .profile:hover .card {
+    animation: none;
+  }
+
+  .card::before {
+    display: none;
+  }
+
+  .head img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .content {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .details {
+    font-size: 18px;
+  }
+
+  .details span {
+    font-size: 14px;
+  }
+}
+
+/* ===========================
+   SMALL PHONES
+=========================== */
+@media (max-width: 480px) {
+  .team {
+    padding: 0 16px;
+  }
+
+  .profile {
+    max-width: 100%;
+  }
+
+  #picture {
+    width: 120px;
+    height: 120px;
+    border-width: 4px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .head {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .name {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .role {
+    text-align: center;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  .icons {
+    margin-top: 16px;
+  }
 }
