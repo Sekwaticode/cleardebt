@@ -5,6 +5,9 @@ import Pointer from "@/components/Pointer";
 import { motion, useAnimate } from "framer-motion";
 import { useEffect } from "react";
 import cursorYouImage from "@/assets/images/cursor-you.svg";
+import Image from "next/image";
+import HeroImage from "@/assets/images/cleardebthero.jpg"
+
 
 export default function Hero() {
     const [leftPointerScope, leftPointerAnimate] = useAnimate();
@@ -40,7 +43,7 @@ export default function Hero() {
     }, []);
     return (
         <section
-            className="py-24 overflow-x-clip"
+            className="py-24 overflow-x-clip grid lg:grid-cols-2 items-center lg:gap-16"
             style={{ cursor: `url(${cursorYouImage.src}), auto` }}
         >
             <div className="container relative">
@@ -95,6 +98,17 @@ export default function Hero() {
                     </Button>
                 </form>
             </div>
+        <div className="relative flex justify-center">
+  <div className="overflow-hidden rounded-3xl shadow-2xl">
+    <Image
+      src={HeroImage}
+      alt="Credit repair consultation"
+      className="h-auto w-full max-w-lg object-cover"
+      priority
+    />
+  </div>
+</div>
         </section>
+        
     );
 }
