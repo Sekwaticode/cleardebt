@@ -23,7 +23,7 @@ const integrations = [
       "I was overwhelmed by debt, but Clear Debt negotiated affordable repayments that changed my life.",
   },
   {
-    name: "Nomsa P.",
+    name: "Thabang N.",
     icon: Testimonial3,
     location: "Durban",
     review:
@@ -37,7 +37,7 @@ const integrations = [
       "The consultants explained everything clearly and made the debt review process stress-free.",
   },
   {
-    name: "Lerato S.",
+    name: "Marco S.",
     icon: Testimonial5,
     location: "Bloemfontein",
     review:
