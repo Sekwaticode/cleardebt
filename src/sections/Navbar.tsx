@@ -23,10 +23,13 @@ export default function Navbar() {
                         <div className="grid grid-cols-2 lg:grid-cols-3  px-4 md:pr-2 items-center ">
                             <div>
                                 {
-                                    <Image
-                                        src={logoImage}
-                                        alt="Layers logo"
-className="size-24 rounded-full object-cover"                                    />
+                                 <a href="#">
+  <Image
+    src={logoImage}
+    alt="Layers logo"
+    className="size-24 rounded-full object-cover"
+  />
+</a>
                                 }
                             </div>
                             <div className="lg:flex justify-center items-center hidden">

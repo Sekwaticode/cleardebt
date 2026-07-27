@@ -5,16 +5,16 @@
 html,
 body {
     min-height: 100%;
+    scroll-behavior: smooth;
+
 }
 
 body {
     position: relative;
     color: white;
-    background: radial-gradient(
-        125% 125% at 50% 10%,
-        #000 40%,
-        #6633ee 100%
-    );
+    background: radial-gradient(125% 125% at 50% 10%,
+            #000 40%,
+            #6633ee 100%);
 }
 
 body::before {
