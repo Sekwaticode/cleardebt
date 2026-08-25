@@ -7,7 +7,7 @@ import logoImage from "@/assets/images/logo.jpeg";
 import Image from "next/image";
 const navLinks = [
     { label: "Home", href: "#" },
-    { label: "Features", href: "#features" },
+    { label: "Services", href: "#features" },
     { label: "Testimonials", href: "#integrations" },
     { label: "FAQs", href: "#faqs" },
     { label: "Team", href: "#team" },

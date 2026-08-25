@@ -6,16 +6,13 @@ import { motion, useAnimate } from "framer-motion";
 import { useEffect } from "react";
 import cursorYouImage from "@/assets/images/cursor-you.svg";
 import Image from "next/image";
-import HeroImage from "@/assets/images/cleardebthero.jpg"
-
+import HeroImage from "@/assets/images/cleardebthero.jpg";
 
 export default function Hero() {
     const [leftPointerScope, leftPointerAnimate] = useAnimate();
     const [rightPointerScope, rightPointerAnimate] = useAnimate();
 
     useEffect(() => {
-      
-
         leftPointerAnimate([
             [leftPointerScope.current, { opacity: 1 }, { duration: 0.2 }],
             [leftPointerScope.current, { y: 0, x: -100 }, { duration: 0.4 }],
@@ -25,7 +22,6 @@ export default function Hero() {
                 { duration: 0.4, ease: "easeInOut" },
             ],
         ]);
-
 
         rightPointerAnimate([
             [
@@ -42,13 +38,8 @@ export default function Hero() {
         ]);
     }, []);
     return (
-        <section
-            className="py-24 overflow-x-clip grid lg:grid-cols-2 items-center lg:gap-16"
-            style={{ cursor: `url(${cursorYouImage.src}), auto` }}
-        >
+        <section className="py-24 overflow-x-clip grid lg:grid-cols-2 items-center lg:gap-16">
             <div className="container relative">
-          
-
                 <motion.div
                     ref={leftPointerScope}
                     initial={{ opacity: 0, y: 100, x: -200 }}
@@ -68,7 +59,7 @@ export default function Hero() {
                         Helping South Africans become debt free{" "}
                     </div>
                 </div>{" "}
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-medium text-center mt-6">
+                <h1 className="text-4xl md:text-5xl lg:text-5xl font-medium text-center mt-6">
                     Take Control of Your Debt, Rebuild Your Future{" "}
                 </h1>
                 <p className="text-center text-xl text-white/50 mt-8 max-w-2xl mx-auto">
@@ -98,17 +89,19 @@ export default function Hero() {
                     </Button>
                 </form>
             </div>
-        <div className="relative flex justify-center">
-  <div className="overflow-hidden rounded-3xl shadow-2xl">
-    <Image
-      src={HeroImage}
-      alt="Credit repair consultation"
-      className="h-auto w-full max-w-lg object-cover"
-      priority
-    />
-  </div>
-</div>
+            <div className="relative flex justify-center">
+                <div
+                    className="overflow-hidden rounded-3xl shadow-2xl"
+                    style={{ cursor: `url(${cursorYouImage.src}), auto` }}
+                >
+                    <Image
+                        src={HeroImage}
+                        alt="Credit repair consultation"
+                        className="h-auto w-full max-w-lg object-cover"
+                        priority
+                    />
+                </div>
+            </div>
         </section>
-        
     );
 }
