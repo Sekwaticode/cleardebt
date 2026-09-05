@@ -8,6 +8,8 @@ import cursorYouImage from "@/assets/images/cursor-you.svg";
 import Image from "next/image";
 import HeroImage from "@/assets/images/cleardebthero.jpg";
 
+
+
 export default function Hero() {
     const [leftPointerScope, leftPointerAnimate] = useAnimate();
     const [rightPointerScope, rightPointerAnimate] = useAnimate();
@@ -39,6 +41,7 @@ export default function Hero() {
     }, []);
     return (
         <section className="py-24 overflow-x-clip grid lg:grid-cols-2 items-center lg:gap-16">
+            
             <div className="container relative">
                 <motion.div
                     ref={leftPointerScope}
@@ -102,6 +105,7 @@ export default function Hero() {
                     />
                 </div>
             </div>
+          
         </section>
     );
 }
