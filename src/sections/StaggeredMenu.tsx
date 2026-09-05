@@ -8,6 +8,8 @@ import React, {
     useState,
 } from "react";
 import { gsap } from "gsap";
+import Image from "next/image";
+import Link from "next/link"
 import "./staggeredmenu.css";
 export interface StaggeredMenuItem {
     label: string;
@@ -667,20 +669,20 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             >
                 <div className="sm-logo">
                     {logoUrl ? (
-                        <img
+                        <Image
                             src={logoUrl}
                             alt="Site logo"
                             className="sm-logo-img"
                             draggable={false}
                         />
                     ) : (
-                        <a
-                            href="/"
-                            className="text-2xl font-bold text-white no-underline"
-                            style={{ color: "inherit" }}
-                        >
-                            Clear Debt
-                        </a>
+                   <Link
+    href="/"
+    className="text-2xl font-bold text-white no-underline"
+    style={{ color: "inherit" }}
+>
+    Clear Debt
+</Link>
                     )}
                 </div>
 
