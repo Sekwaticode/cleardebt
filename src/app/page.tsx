@@ -29,7 +29,7 @@ const socialItems = [
 export default function Home() {
     return (
         <>
-          <main className="min-h-screen bg-background">
+         <main className="min-h-screen bg-background">
       <StaggeredMenu
         position="right"
         items={menuItems}
@@ -37,10 +37,10 @@ export default function Home() {
         displaySocials
         displayItemNumbering
         menuButtonColor="#ffffff"
-        openMenuButtonColor="#ffffff"
+        openMenuButtonColor="#111827"
         changeMenuColorOnOpen
         isFixed
-        colors={["#B497CF", "#5227FF"]}
+        colors={["#1303a0", "#5227FF"]}
         accentColor="#5227FF"
       />
             <Hero />
