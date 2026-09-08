@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script"
 import "./globals.css";
 
 const inter = Inter({
@@ -33,6 +34,8 @@ export default function RootLayout({
   />
 
   {children}
+  <div id="JFWebsiteWidget-01a0822240b070008adae7de7855e3e27e1d"></div>
+<Script src="https://www.jotform.com/website-widgets/embed/01a0822240b070008adae7de7855e3e27e1d"/>
 </body>
         </html>
     );

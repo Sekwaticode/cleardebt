@@ -14,7 +14,7 @@ export default function IntegrationColumn(props: {
     const { integrations, className, reverse } = props;
     return (
         <motion.div
-        initial={{y:reverse? '-50%' : 0}}
+            initial={{ y: reverse ? "-50%" : 0 }}
             animate={{ y: reverse ? 0 : "-50%" }}
             transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
             className={twMerge("flex flex-col gap-4 pb-4", className)}
@@ -27,15 +27,16 @@ export default function IntegrationColumn(props: {
                             className="bg-neutral-900 border border-white/10 rounded-3xl p-6 "
                         >
                             <div className="flex justify-center">
-                               <Image
-    src={integration.icon}
-    alt={integration.name}
-    className="size-24 rounded-full object-cover"
-/>
+                                <Image
+                                    src={integration.icon}
+                                    alt={integration.name}
+                                    className="size-24 rounded-full object-cover"
+                                />
                             </div>
-                            
+
                             <p className="text-center text-white mt-2">
-                                {integration.review} - {integration.name}, {integration.location}
+                                {integration.review} - {integration.name},{" "}
+                                {integration.location}
                             </p>
                         </div>
                     ))}
