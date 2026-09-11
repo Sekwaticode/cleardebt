@@ -3,13 +3,18 @@
 import Integrations from "@/sections/Integrations";
 import Faqs from "@/sections/Faqs";
 import Footer from "@/sections/Footer";
-import Script from "next/script";
 import StaggeredMenu from "@/sections/StaggeredMenu";
+import CTA from "@/sections/CallToAction";
+import Script from "next/script";
 
 const menuItems = [
     { label: "Home", ariaLabel: "Go to home page", link: "/" },
     { label: "About", ariaLabel: "Learn about us", link: "/about" },
-    { label: "Testimonials", ariaLabel: "View our testimonials", link: "/testimonials" },
+    {
+        label: "Testimonials",
+        ariaLabel: "View our testimonials",
+        link: "/testimonials",
+    },
     { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
 ];
 
@@ -29,7 +34,7 @@ export default function Home() {
                     items={menuItems}
                     socialItems={socialItems}
                     displaySocials
-                   displayItemNumbering
+                    displayItemNumbering
                     menuButtonColor="#ffffff"
                     openMenuButtonColor="#111827"
                     changeMenuColorOnOpen
@@ -38,10 +43,12 @@ export default function Home() {
                     accentColor="#5227FF"
                 />
                 <Integrations />
-                <div id="JFWebsiteWidget-01a090bc176870008176b0cc4f433b1c94d4"></div>
-                <Script src="https://www.jotform.com/website-widgets/embed/01a090bc176870008176b0cc4f433b1c94d4" />
+                   <div className="container">
+                    <div id="JFWebsiteWidget-01a090bc176870008176b0cc4f433b1c94d4"></div>
+                    <Script src="https://www.jotform.com/website-widgets/embed/01a090bc176870008176b0cc4f433b1c94d4" />
+                </div>
                 <Faqs />
-
+                <CTA />
                 <Footer />
             </main>
         </>

@@ -44,7 +44,7 @@ export default function CallToAction() {
                             <span className="text-fuchsia-400 text-7xl ">
                                 &#10038;
                             </span>
-                            <span className="group-hover:text-fuchsia-400">Try it for free</span>
+                            <span className="group-hover:text-fuchsia-400">Get a free credit check!</span>
                         </div>
                     ))}
                 </motion.div>
