@@ -1,14 +1,9 @@
 "use client";
 
-import Hero from "@/sections/Hero";
-import LogoTicker from "@/sections/LogoTicker";
 import Introduction from "@/sections/Introduction";
 import Features from "@/sections/Features";
 import Services from "@/sections/Services";
-import Integrations from "@/sections/Integrations";
-import Faqs from "@/sections/Faqs";
 import Footer from "@/sections/Footer";
-import Team from "@/sections/Team/Team";
 import StaggeredMenu from "@/sections/StaggeredMenu";
 
 const menuItems = [
@@ -43,14 +38,9 @@ export default function Home() {
         colors={["#1303a0", "#5227FF"]}
         accentColor="#5227FF"
       />
-            <Hero />
-            <LogoTicker />
-            <Introduction />
             <Features />
+            <Introduction />
             <Services />
-            <Integrations />
-            <Faqs />
-            <Team />
             <Footer />
             </main>
         </>
