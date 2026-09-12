@@ -9,7 +9,8 @@ import React, {
 } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
-import Link from "next/link"
+import logoImage from "@/assets/images/logo.jpeg";
+import Link from "next/link";
 import "./staggeredmenu.css";
 export interface StaggeredMenuItem {
     label: string;
@@ -147,7 +148,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         return () => ctx.revert();
     }, [menuButtonColor, position]);
 
-  
     const buildOpenTimeline = useCallback(() => {
         const panel = panelRef.current;
         const layers = preLayerElsRef.current;
@@ -318,7 +318,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         return tl;
     }, [position]);
 
-  
     const playOpen = useCallback(() => {
         if (busyRef.current) {
             return;
@@ -340,7 +339,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         tl.play(0);
     }, [buildOpenTimeline]);
 
-    
     const playClose = useCallback(() => {
         openTlRef.current?.kill();
         openTlRef.current = null;
@@ -430,7 +428,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         });
     }, []);
 
-
     const animateColor = useCallback(
         (opening: boolean) => {
             const button = toggleBtnRef.current;
@@ -461,7 +458,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor],
     );
 
-
     useEffect(() => {
         const button = toggleBtnRef.current;
 
@@ -479,7 +475,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         });
     }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
 
-  
     const animateText = useCallback((opening: boolean) => {
         const inner = textInnerRef.current;
 
@@ -526,7 +521,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         });
     }, []);
 
- 
     const closeMenu = useCallback(() => {
         if (!openRef.current) {
             return;
@@ -548,7 +542,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         });
     }, [playClose, animateIcon, animateColor, animateText, onMenuClose]);
 
-  
     const toggleMenu = useCallback(() => {
         const target = !openRef.current;
 
@@ -576,7 +569,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         onMenuClose,
     ]);
 
-  
     useEffect(() => {
         if (!open) {
             return;
@@ -615,7 +607,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         };
     }, [open, closeOnClickAway, closeMenu]);
 
-  
     useEffect(() => {
         return () => {
             openTlRef.current?.kill();
@@ -676,13 +667,17 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                             draggable={false}
                         />
                     ) : (
-                   <Link
-    href="/"
-    className="text-2xl font-bold text-white no-underline"
-    style={{ color: "inherit" }}
->
-    Clear Debt
-</Link>
+                        <Link
+                            href="/"
+                            className="text-2xl font-bold text-white no-underline"
+                            style={{ color: "inherit" }}
+                        >
+                            <Image
+                                src={logoImage}
+                                alt="Clear Debt logo"
+                                className="size-24 rounded-full object-cover"
+                            />{" "}
+                        </Link>
                     )}
                 </div>
 

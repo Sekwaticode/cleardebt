@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+
+/* Footer */
+footer {
+  width: 100%;
+  padding: 50px 100px;
+}
+
+footer .container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+footer .container .sec h2 {
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+footer .container .sec p {
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Social icons */
+footer .container .sci {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 40px);
+  gap: 10px;
+  list-style: none; /* ✅ removes bullets */
+  padding: 0;
+}
+
+footer .container .sci li {
+  list-style: none; /* ✅ bullet fix */
+}
+
+footer .container .sci li a {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+footer .container .sci li a i {
+  color: #fff;
+  font-size: 18px;
+}
+
+/* Quick links */
+footer .container .quickLinks ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer .container .quickLinks ul li a {
+  color: #ccc;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+/* Contact */
+footer .container .contact .info {
+  list-style: none;
+  padding: 0;
+}
+
+footer .container .contact .info li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  margin-bottom: 16px;
+}
+
+footer .container .contact .info li span {
+  color: #ccc;
+  font-size: 20px;
+}
+
+footer .container .contact .info li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+/* Copyright */
+.copyrightText {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  color: #ccc;
+  border-top: 1px solid rgba(0,0,0,0.15);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 991px) {
+  footer {
+    padding: 40px;
+  }
+
+  footer .container {
+    grid-template-columns: 1fr 1fr; /* ✅ tablet */
+  }
+}
+
+@media (max-width: 600px) {
+  footer .container {
+    grid-template-columns: 1fr; /* ✅ mobile */
+  }
+
+  footer {
+    padding: 30px 20px;
+  }
+
+  .copyrightText {
+    padding: 15px;
+  }
+}
