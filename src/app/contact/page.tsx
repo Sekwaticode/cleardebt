@@ -1,11 +1,9 @@
 "use client";
 
-import Integrations from "@/sections/Integrations";
 import Faqs from "@/sections/Faqs";
 import Footer from "@/sections/Footer";
 import StaggeredMenu from "@/sections/StaggeredMenu";
-import CTA from "@/sections/CallToAction";
-import Script from "next/script";
+import Contact from "@/sections/Contact";
 
 const menuItems = [
     { label: "Home", ariaLabel: "Go to home page", link: "/" },
@@ -47,13 +45,9 @@ export default function Home() {
                     colors={["#1303a0", "#5227FF"]}
                     accentColor="#5227FF"
                 />
-                <Integrations />
-                <div className="container">
-                    <div id="JFWebsiteWidget-01a090bc176870008176b0cc4f433b1c94d4"></div>
-                    <Script src="https://www.jotform.com/website-widgets/embed/01a090bc176870008176b0cc4f433b1c94d4" />
-                </div>
+
+                <Contact />
                 <Faqs />
-                <CTA />
                 <Footer />
             </main>
         </>

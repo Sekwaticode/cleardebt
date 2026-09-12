@@ -6,6 +6,7 @@ import Introduction from "@/sections/Introduction";
 import Features from "@/sections/Features";
 import Services from "@/sections/Services";
 import Integrations from "@/sections/Integrations";
+import Contacts from "@/sections/Contact.tsx"
 import Faqs from "@/sections/Faqs";
 import Footer from "@/sections/Footer";
 import StaggeredMenu from "@/sections/StaggeredMenu";
@@ -18,10 +19,9 @@ const menuItems = [
 ];
 
 const socialItems = [
-  { label: "Facebook", link: "https://facebook.com" },
-  { label: "Twitter", link: "https://twitter.com" },
-  { label: "Instagram", link: "https://instagram.com" },
-  { label: "LinkedIn", link: "https://linkedin.com" },
+  { label: "Facebook", link: "https://www.facebook.com/profile.php?id=61574247381160" },
+  { label: "Whatsapp", link: "https://api.whatsapp.com/send/?phone=27793932311&text&type=phone_number&app_absent=0" },
+  { label: "TikTok", link: "https://www.tiktok.com/@clear.debt" },
 ];
 
 
@@ -48,6 +48,7 @@ export default function Home() {
             <Features />
             <Services />
             <Integrations />
+            <Contacts/>
             <Faqs />
             <Footer />
             </main>

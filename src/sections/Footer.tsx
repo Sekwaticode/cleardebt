@@ -25,29 +25,10 @@ const Footer = () => {
                             caring service every step of the way.
                         </p>
 
-                        <ul className="sci">
-                            <li>
-                                <a href="#" aria-label="Facebook">
-                                    <FaFacebookF />
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" aria-label="TikTok">
-                                    <FaTiktok />
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#" aria-label="WhatsApp">
-                                    <FaWhatsapp />
-                                </a>
-                            </li>
-                        </ul>
+                        
                     </div>
 
-                   
-
+        
                     <div className="sec quickLinks">
                         <h2>Links</h2>
 
@@ -91,6 +72,25 @@ const Footer = () => {
                                         info@clear-debt.co.za
                                     </a>
                                 </p>
+                            </li>
+                        </ul>
+                        <ul className="sci">
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=61574247381160" aria-label="Facebook">
+                                    <FaFacebookF />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="https://www.tiktok.com/@clear.debt" aria-label="TikTok">
+                                    <FaTiktok />
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="https://api.whatsapp.com/send/?phone=27793932311&text&type=phone_number&app_absent=0" aria-label="WhatsApp">
+                                    <FaWhatsapp />
+                                </a>
                             </li>
                         </ul>
                     </div>
