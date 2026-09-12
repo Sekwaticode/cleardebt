@@ -8,7 +8,6 @@ import Services from "@/sections/Services";
 import Integrations from "@/sections/Integrations";
 import Faqs from "@/sections/Faqs";
 import Footer from "@/sections/Footer";
-import Team from "@/sections/Team/Team";
 import StaggeredMenu from "@/sections/StaggeredMenu";
 
 const menuItems = [
@@ -50,7 +49,6 @@ export default function Home() {
             <Services />
             <Integrations />
             <Faqs />
-            <Team />
             <Footer />
             </main>
         </>
