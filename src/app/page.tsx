@@ -6,7 +6,7 @@ import Introduction from "@/sections/Introduction";
 import Features from "@/sections/Features";
 import Services from "@/sections/Services";
 import Integrations from "@/sections/Integrations";
-import Contacts from "@/sections/Contact.tsx"
+import Contacts from "@/sections/Contact"
 import Faqs from "@/sections/Faqs";
 import Footer from "@/sections/Footer";
 import StaggeredMenu from "@/sections/StaggeredMenu";
