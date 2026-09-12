@@ -20,7 +20,7 @@ const Footer = () => {
                         <p>
                             We are passionate about helping South Africans
                             achieve financial freedom by assisting with credit
-                            management. Every client matters to us and we're
+                            management. Every client matters to us and we&apos;re
                             committed to providing honest, professional and
                             caring service every step of the way.
                         </p>
