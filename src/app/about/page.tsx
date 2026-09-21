@@ -4,40 +4,13 @@ import Introduction from "@/sections/Introduction";
 import Features from "@/sections/Features";
 import Services from "@/sections/Services";
 import Footer from "@/sections/Footer";
-import StaggeredMenu from "@/sections/StaggeredMenu";
-
-const menuItems = [
-  { label: "Home", ariaLabel: "Go to home page", link: "/" },
-  { label: "About", ariaLabel: "Learn about us", link: "/about" },
-  { label: "Testimonials", ariaLabel: "View our testimonials", link: "/testimonials" },
-  { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
-];
-
-const socialItems = [
-  { label: "Facebook", link: "https://facebook.com" },
-  { label: "Twitter", link: "https://twitter.com" },
-  { label: "Instagram", link: "https://instagram.com" },
-  { label: "LinkedIn", link: "https://linkedin.com" },
-];
 
 
 export default function Home() {
     return (
         <>
          <main className="min-h-screen bg-background">
-      <StaggeredMenu
-        position="right"
-        items={menuItems}
-        socialItems={socialItems}
-        displaySocials
-        displayItemNumbering
-        menuButtonColor="#ffffff"
-        openMenuButtonColor="#111827"
-        changeMenuColorOnOpen
-        isFixed
-        colors={["#1303a0", "#5227FF"]}
-        accentColor="#5227FF"
-      />
+   
             <Features />
             <Introduction />
             <Services />

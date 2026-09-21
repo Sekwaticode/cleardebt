@@ -11,6 +11,8 @@ footer .container {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 20px;
+  color: #fff;
+
 }
 
 footer .container .sec h2 {
@@ -30,12 +32,14 @@ footer .container .sci {
   display: grid;
   grid-template-columns: repeat(4, 40px);
   gap: 10px;
-  list-style: none; /* ✅ removes bullets */
+  list-style: none;
+  /* ✅ removes bullets */
   padding: 0;
 }
 
 footer .container .sci li {
-  list-style: none; /* ✅ bullet fix */
+  list-style: none;
+  /* ✅ bullet fix */
 }
 
 footer .container .sci li a {
@@ -93,7 +97,7 @@ footer .container .contact .info li a {
   padding: 20px;
   text-align: center;
   color: #ccc;
-  border-top: 1px solid rgba(0,0,0,0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -104,13 +108,15 @@ footer .container .contact .info li a {
   }
 
   footer .container {
-    grid-template-columns: 1fr 1fr; /* ✅ tablet */
+    grid-template-columns: 1fr 1fr;
+    /* ✅ tablet */
   }
 }
 
 @media (max-width: 600px) {
   footer .container {
-    grid-template-columns: 1fr; /* ✅ mobile */
+    grid-template-columns: 1fr;
+    /* ✅ mobile */
   }
 
   footer {

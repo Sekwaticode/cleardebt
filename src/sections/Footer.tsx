@@ -1,9 +1,4 @@
-import {
-    FaFacebookF,
-    FaTiktok,
-    FaWhatsapp,
-    FaPhone,
-} from "react-icons/fa";
+import { FaFacebookF, FaTiktok, FaWhatsapp, FaPhone } from "react-icons/fa";
 import "./Footer.css";
 import Image from "next/image";
 import logoImage from "@/assets/images/logo.jpeg";
@@ -20,15 +15,13 @@ const Footer = () => {
                         <p>
                             We are passionate about helping South Africans
                             achieve financial freedom by assisting with credit
-                            management. Every client matters to us and we&apos;re
-                            committed to providing honest, professional and
-                            caring service every step of the way.
+                            management. Every client matters to us and
+                            we&apos;re committed to providing honest,
+                            professional and caring service every step of the
+                            way.
                         </p>
-
-                        
                     </div>
 
-        
                     <div className="sec quickLinks">
                         <h2>Links</h2>
 
@@ -76,30 +69,40 @@ const Footer = () => {
                         </ul>
                         <ul className="sci">
                             <li>
-                                <a href="https://www.facebook.com/profile.php?id=61574247381160" aria-label="Facebook">
+                                <a
+                                    href="https://www.facebook.com/profile.php?id=61574247381160"
+                                    aria-label="Facebook"
+                                >
                                     <FaFacebookF />
                                 </a>
                             </li>
 
                             <li>
-                                <a href="https://www.tiktok.com/@clear.debt" aria-label="TikTok">
+                                <a
+                                    href="https://www.tiktok.com/@clear.debt"
+                                    aria-label="TikTok"
+                                >
                                     <FaTiktok />
                                 </a>
                             </li>
 
                             <li>
-                                <a href="https://api.whatsapp.com/send/?phone=27793932311&text&type=phone_number&app_absent=0" aria-label="WhatsApp">
+                                <a
+                                    href="https://api.whatsapp.com/send/?phone=27793932311&text&type=phone_number&app_absent=0"
+                                    aria-label="WhatsApp"
+                                >
                                     <FaWhatsapp />
                                 </a>
                             </li>
                         </ul>
                     </div>
-                     <div className="sec">
+                    <div className="sec">
                         <Image
-                                                       src={logoImage}
-                                                       alt="Clear Debt logo"
-                                                       className="size-24 rounded-full object-cover"
-                                                   />
+                            src={logoImage}
+                            alt="Clear Debt logo"
+                            className="size-24 rounded-full object-cover"
+                        />
+                        <h2 className="text-white/50">NCRDC4086</h2>
                     </div>
                 </div>
             </footer>
