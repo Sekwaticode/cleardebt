@@ -9,6 +9,7 @@ const menuItems = [
   { label: "About", ariaLabel: "Learn about us", link: "/about" },
   { label: "Testimonials", ariaLabel: "View our testimonials", link: "/testimonials" },
   { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
+  { label: "Forms", ariaLabel: "Sign in to complete your forms", link: "/forms" },
 ];
 
 const socialItems = [
