@@ -197,9 +197,73 @@ export const SECTIONS: SectionDef[] = [
         name: "Contact",
         group: "Sections",
         file: "src/sections/Contact.tsx",
-        description: "Heading above the appointment booking form. The form itself is managed in JotForm.",
+        description:
+            "The appointment booking form: heading, services visitors can tick, available dates and times, and the thank-you message. Bookings are emailed through Web3Forms.",
         usedOn: [HOME, CONTACT],
-        fields: [tag(), heading()],
+        fields: [
+            tag(),
+            heading(),
+            {
+                type: "group",
+                name: "form",
+                label: "Booking form",
+                fields: [
+                    image("logo", "Logo"),
+                    text("title", "Form title", { maxLength: 60 }),
+                    text("subtitle", "Form introduction", { maxLength: 160 }),
+                    text("servicesHeading", "Services heading", { maxLength: 60 }),
+                    text("servicesHelp", "Services hint", { maxLength: 120 }),
+                    {
+                        type: "list",
+                        name: "services",
+                        label: "Services",
+                        itemLabel: "Service",
+                        titleField: "name",
+                        help: "Visitors can tick as many of these as they like.",
+                        min: 1,
+                        max: 12,
+                        fields: [text("name", "Service name", { maxLength: 60, required: true })],
+                    },
+                    text("dateHeading", "Date heading", { maxLength: 60 }),
+                    text("timeHeading", "Time heading", { maxLength: 60 }),
+                    text("summaryHeading", "Summary heading", { maxLength: 60 }),
+                    text("detailsHeading", "Details heading", { maxLength: 60 }),
+                    text("notesPlaceholder", "Notes placeholder", { maxLength: 120 }),
+                    text("buttonText", "Button text", { maxLength: 30, required: true }),
+                    text("successTitle", "Thank-you heading", { maxLength: 60, required: true }),
+                    textarea("successMessage", "Thank-you message", { maxLength: 400 }),
+                ],
+            },
+            {
+                type: "group",
+                name: "schedule",
+                label: "Availability",
+                help: "Weekends are never offered. Dates start from tomorrow.",
+                fields: [
+                    { type: "number", name: "daysAhead", label: "How many days ahead visitors can book", min: 1, max: 60, integer: true },
+                    { type: "number", name: "openingHour", label: "First appointment hour (24h, e.g. 9)", min: 0, max: 23, integer: true },
+                    { type: "number", name: "closingHour", label: "Closing hour (24h, e.g. 17)", min: 1, max: 24, integer: true, help: "The last slot starts before this hour." },
+                    { type: "number", name: "slotMinutes", label: "Minutes between time slots", min: 15, max: 240, integer: true },
+                    text("timeZoneLabel", "Time zone (as shown)", { maxLength: 40 }),
+                ],
+            },
+            text("emailSubject", "Booking email subject", {
+                maxLength: 120,
+                required: true,
+                help: "The subject line of the email you receive for each booking.",
+            }),
+        ],
+        validate: (v) => {
+            const errors: Record<string, string> = {};
+            const schedule = (v.schedule ?? {}) as Record<string, unknown>;
+            if (Number(schedule.closingHour) <= Number(schedule.openingHour)) {
+                errors["schedule.closingHour"] = "The closing hour must be later than the first appointment hour.";
+            }
+            const services = ((v.form as Record<string, unknown>)?.services ?? []) as { name?: unknown }[];
+            const names = services.map((s) => String(s.name).trim().toLowerCase());
+            if (new Set(names).size !== names.length) errors["form.services"] = "Each service needs a different name.";
+            return errors;
+        },
     },
     {
         key: "faqs",

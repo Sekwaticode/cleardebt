@@ -211,6 +211,38 @@ export const DEFAULT_CONTENT = {
             highlight: "appointment",
             after: "and start your journey to financial freedom now!",
         },
+        form: {
+            logo: img(logoImage, "Clear Debt logo"),
+            title: "Clear Debt",
+            subtitle: "Book a convenient time with our team in just a few clicks.",
+            servicesHeading: "Choose your services",
+            servicesHelp: "Tick all that you are interested in.",
+            services: [
+                { name: "Debt Review Removal" },
+                { name: "Judgement Removal" },
+                { name: "Update Credit Bureau" },
+                { name: "Prescribed (Old) Debt Removal" },
+                { name: "Admin Order Removal" },
+                { name: "Credit Advice" },
+            ],
+            dateHeading: "Choose a date",
+            timeHeading: "Choose a time",
+            summaryHeading: "Booking summary",
+            detailsHeading: "Your details",
+            notesPlaceholder: "Share anything we should know before the appointment.",
+            buttonText: "Book appointment",
+            successTitle: "Appointment requested!",
+            successMessage:
+                "Thank you for booking with Clear Debt. A member of our team will be in touch shortly to confirm your appointment.",
+        },
+        schedule: {
+            daysAhead: 7,
+            openingHour: 9,
+            closingHour: 17,
+            slotMinutes: 30,
+            timeZoneLabel: "Johannesburg (SAST)",
+        },
+        emailSubject: "New appointment booking from the Clear Debt website",
     },
 
     faqs: {
