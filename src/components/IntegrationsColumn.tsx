@@ -21,22 +21,22 @@ export default function IntegrationColumn(props: {
         >
             {Array.from({ length: 2 }).map((_, i) => (
                 <Fragment key={i}>
-                    {integrations.map((integration) => (
+                    {integrations.map((integration, j) => (
                         <div
-                            key={integration.name}
+                            key={j}
                             className="bg-neutral-900 border border-white/10 rounded-3xl p-6 "
                         >
                             <div className="flex justify-center">
                                 <Image
-                                    src={integration.icon}
-                                    alt={integration.name}
+                                    src={integration.image}
+                                    alt={integration.image.alt || integration.name}
                                     className="size-24 rounded-full object-cover"
                                 />
                             </div>
 
                             <p className="text-center text-white mt-2">
-                                {integration.review} - {integration.name},{" "}
-                                {integration.location}
+                                {integration.review} - {integration.name}
+                                {integration.location && `, ${integration.location}`}
                             </p>
                         </div>
                     ))}

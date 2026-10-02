@@ -11,7 +11,6 @@ import "./Carousel.css";
 const DEFAULT_ITEMS = [
   {
     title: "Financial Advice & Guidance",
-    description: "We help you make informed decisions, manage your debt and build a better financial future",
     id: 1,
     icon: <FiFileText className="carousel-icon" />,
   },

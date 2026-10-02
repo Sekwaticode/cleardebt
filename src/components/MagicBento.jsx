@@ -5,116 +5,54 @@ import { gsap } from 'gsap';
 import './MagicBento.css';
 import Carousel from "@/components/Carousel/Carousel"
 import Stepper, { Step } from './Stepper';
-  
+import { DEFAULT_CONTENT } from '@/lib/cms/defaults';
+
 
 const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
 const DEFAULT_GLOW_COLOR = '132, 0, 255';
 const MOBILE_BREAKPOINT = 768;
+const CARD_COLOR = '#120F17';
 
-const cardData = [
-  {
-    color: '#120F17',
-    title: 'Debt Review Removal',
-    description: 'Exit debt review legally and restore your financial freedom with expert assistance.',
-    label: 'Debt Relief',
-  },
-  {
-    color: '#120F17',
-    title: 'Judgement Removal',
-    description: 'Remove qualifying court judgments from your credit profile to improve your creditworthiness.',
-    label: 'Legal Help',
-  },
-  {
-    color: '#120F17',
-    title: 'Update Credit Bureau',
-    description: 'Ensure your credit records are accurate and up to date across all major credit bureaus.',
-    label: 'Credit Record',
-    component: (
-      <div style={{ height: 320, marginTop: 20 }}>
-        <Carousel
-          baseWidth={260}
-          autoplay={false}
-          autoplayDelay={3000}
-          pauseOnHover={false}
-          loop={false}
-          round={false}
-        />
-      </div>
-    ),
-  },
-  {
-    color: '#120F17',
-    title: 'Prescribed Debt Removal',
-    description: 'Have legally prescribed old debt identified and removed from your credit profile.',
-    label: 'Old Debt',
-     component: (
-      <div><Stepper
-  initialStep={1}
-  onStepChange={(step) => {
-    console.log(step);
-  }}
-  onFinalStepCompleted={() => console.log("All steps completed!")}
-  backButtonText="Previous"
-  nextButtonText="Next"
->
-
-  <Step>
-    <div className="space-y-4 text-center py-10">
-      <h2 className="magic-bento-card__header">
-        Free Credit Check
-      </h2>
-    </div>
-  </Step>
-
-  <Step>
-    <div className="space-y-4 text-center py-10">
-      <h2 className="magic-bento-card__header">
-Document Collection      </h2>
-    </div>
-  </Step>
-
-  <Step>
-    <div className="space-y-4 text-center py-10">
-      <h2 className="magic-bento-card__header">
-Application Preparation      </h2>
-
-   
-    </div>
-  </Step>
-
-  <Step>
-    <div className="space-y-4 text-center py-10">
-      <h2 className="magic-bento-card__header">
-Submission & Follow Up      </h2>
-
-    </div>
-  </Step>
-
-  <Step>
-    <div className="space-y-4 text-center py-10">
-      <h2 className="magic-bento-card__header">
-Results & Assistance      </h2>
-
-    </div>
-  </Step>
-</Stepper>
-</div>
-    ),
-  },
-  {
-    color: '#120F17',
-    title: 'Admin Order Removal',
-    description: 'Get assistance with removing administration orders and rebuilding your financial standing.',
-    label: 'Admin Orders',
-  },
-  {
-    color: '#120F17',
-    title: 'Credit Advice',
-    description: 'Receive professional guidance to improve your credit score and make informed financial decisions.',
-    label: 'Expert Advice',
-  },
-];
+// Cards 3 and 4 show an interactive component instead of their title/description.
+// Texts come from the CMS (magicBento + stepper); colours and components stay fixed here.
+const buildCardData = (content, stepper) =>
+  content.cards.map((card, index) => ({
+    color: CARD_COLOR,
+    title: card.title,
+    description: card.description,
+    label: card.label,
+    component:
+      index === 2 ? (
+        <div style={{ height: 320, marginTop: 20 }}>
+          <Carousel
+            baseWidth={260}
+            autoplay={false}
+            autoplayDelay={3000}
+            pauseOnHover={false}
+            loop={false}
+            round={false}
+          />
+        </div>
+      ) : index === 3 ? (
+        <div>
+          <Stepper
+            initialStep={1}
+            backButtonText={stepper.backButtonText}
+            nextButtonText={stepper.nextButtonText}
+            finishButtonText={stepper.finishButtonText}
+          >
+            {stepper.steps.map((step, i) => (
+              <Step key={i}>
+                <div className="space-y-4 text-center py-10">
+                  <h2 className="magic-bento-card__header">{step.title}</h2>
+                </div>
+              </Step>
+            ))}
+          </Stepper>
+        </div>
+      ) : undefined,
+  }));
 
 const createParticleElement = (x, y, color = DEFAULT_GLOW_COLOR) => {
   const el = document.createElement('div');
@@ -541,6 +479,8 @@ const useMobileDetection = () => {
 };
 
 const MagicBento = ({
+  content = DEFAULT_CONTENT.magicBento,
+  stepper = DEFAULT_CONTENT.stepper,
   textAutoHide = true,
   enableStars = true,
   enableSpotlight = true,
@@ -556,6 +496,7 @@ const MagicBento = ({
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
+  const cardData = buildCardData(content, stepper);
 
   return (
     <>

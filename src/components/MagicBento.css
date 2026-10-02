@@ -68,8 +68,8 @@
 
 .magic-bento-card__title,
 .magic-bento-card__description {
-  --clamp-title: 1;
-  --clamp-desc: 2;
+  --clamp-title: 2;
+  --clamp-desc: 5;
 }
 
 .magic-bento-card__title {

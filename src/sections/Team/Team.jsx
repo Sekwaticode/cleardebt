@@ -1,68 +1,29 @@
 import "./Team.css";
 import Tag from "@/components/Tag";
-import Lihle from "@/assets/images/team-lihle.jpg";
-import Tasmin from "@/assets/images/team-tasmin.jpg";
-import Zelda from "@/assets/images/team-zelda.jpg";
-import Angie from "@/assets/images/team-angie.jpg";
 import Image from "next/image";
+import HighlightText from "@/components/HighlightText";
+import { DEFAULT_CONTENT } from "@/lib/cms/defaults";
 
-import "./Team.css";
 import { FaInstagram, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
 
-const teamMembers = [
-    {
-        id: 1,
-        name: "Lihle",
-        role: "Debt Specialist",
-        description:
-            "Helps clients understand debt review, create affordable repayment plans, and take the first step toward financial freedom.",
-        image: Lihle,
-    },
-    {
-        id: 2,
-        name: "Tasmin",
-        role: "Debt Counsellor",
-        description:
-            "Provides compassionate guidance, assesses financial situations, and supports clients throughout every stage of debt review.",
-        image: Tasmin,
-    },
-    {
-        id: 3,
-        name: "Zelda",
-        role: "Marketing Manager",
-        description:
-            "Leads marketing initiatives, builds brand awareness, and connects more South Africans with trusted debt relief solutions.",
-        image: Zelda,
-    },
-    {
-        id: 4,
-        name: "Angie",
-        role: "Debt Advisor",
-        description:
-            "Works closely with clients to explain available options and recommend practical solutions for managing outstanding debt.",
-        image: Angie,
-    },
-];
-
-export default function Team() {
+/** @param {{ content?: import("@/lib/cms/defaults").TeamContent }} props */
+export default function Team({ content = DEFAULT_CONTENT.team }) {
     return (
         <div className="center">
-           <Tag>Our Team</Tag>
+           <Tag>{content.tag}</Tag>
                 <h2 className="text-6xl font-medium mt-6 text-center max-w-xl mx-auto">
-                    Our Team of
-                    <span className="text-fuchsia-400"> expert</span> debt
-                    relief specialists
+                    <HighlightText value={content.heading} />
                 </h2>
             <div className="team">
-               
+
                 <section className="wrapper">
                     <div className="card_Container">
-                        {teamMembers.map((teamMember) => (
-                            <div className="card" key={teamMember.id}>
+                        {content.members.map((teamMember, index) => (
+                            <div className="card" key={index}>
                                 <div className="imgBx">
                                     <Image
                                         src={teamMember.image}
-                                        alt={teamMember.name}
+                                        alt={teamMember.image.alt || teamMember.name}
                                     />
                                 </div>
 
@@ -77,19 +38,19 @@ export default function Team() {
 
                                     <ul className="sci">
                                         <li style={{ "--i": 1 }}>
-                                            <a href="#">
+                                            <a href={teamMember.instagramUrl || "#"} aria-label={`${teamMember.name} on Instagram`}>
                                                 <FaInstagram />
                                             </a>
                                         </li>
 
                                         <li style={{ "--i": 2 }}>
-                                            <a href="#">
+                                            <a href={teamMember.whatsappUrl || "#"} aria-label={`${teamMember.name} on WhatsApp`}>
                                                 <FaWhatsapp />
                                             </a>
                                         </li>
 
                                         <li style={{ "--i": 3 }}>
-                                            <a href="#">
+                                            <a href={teamMember.linkedinUrl || "#"} aria-label={`${teamMember.name} on LinkedIn`}>
                                                 <FaLinkedinIn />
                                             </a>
                                         </li>

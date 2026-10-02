@@ -40,6 +40,12 @@ export interface StaggeredMenuProps {
     onMenuOpen?: () => void;
     onMenuClose?: () => void;
     isFixed?: boolean;
+    /** Toggle button labels (editable in the CMS). */
+    menuText?: string;
+    closeText?: string;
+    socialsTitle?: string;
+    /** Logo image; falls back to the bundled logo. */
+    logo?: { src: string; width: number; height: number; alt: string };
 }
 
 export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
@@ -59,6 +65,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     closeOnClickAway = true,
     onMenuOpen,
     onMenuClose,
+    menuText = "Menu",
+    closeText = "Close",
+    socialsTitle = "Socials",
+    logo,
 }) => {
     const [open, setOpen] = useState(false);
     const openRef = useRef(false);
@@ -74,7 +84,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     const textInnerRef = useRef<HTMLSpanElement | null>(null);
     const toggleBtnRef = useRef<HTMLButtonElement | null>(null);
 
-    const [textLines, setTextLines] = useState<string[]>(["Menu", "Close"]);
+    const [textLines, setTextLines] = useState<string[]>([menuText, closeText]);
 
     const openTlRef = useRef<gsap.core.Timeline | null>(null);
     const closeTweenRef = useRef<gsap.core.Tween | null>(null);
@@ -484,8 +494,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
         textCycleAnimRef.current?.kill();
 
-        const currentLabel = opening ? "Menu" : "Close";
-        const targetLabel = opening ? "Close" : "Menu";
+        const currentLabel = opening ? menuText : closeText;
+        const targetLabel = opening ? closeText : menuText;
 
         const cycles = 3;
 
@@ -494,7 +504,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         let last = currentLabel;
 
         for (let i = 0; i < cycles; i++) {
-            last = last === "Menu" ? "Close" : "Menu";
+            last = last === menuText ? closeText : menuText;
             sequence.push(last);
         }
 
@@ -519,7 +529,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             duration: 0.5 + lineCount * 0.07,
             ease: "power4.out",
         });
-    }, []);
+    }, [menuText, closeText]);
 
     const closeMenu = useCallback(() => {
         if (!openRef.current) {
@@ -673,8 +683,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                             style={{ color: "inherit" }}
                         >
                             <Image
-                                src={logoImage}
-                                alt="Clear Debt logo"
+                                src={logo ?? logoImage}
+                                alt={logo?.alt ?? "Clear Debt logo"}
                                 className="size-24 rounded-full object-cover"
                             />{" "}
                         </Link>
@@ -766,7 +776,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
                     {displaySocials && socialItems.length > 0 && (
                         <div className="sm-socials" aria-label="Social links">
-                            <h3 className="sm-socials-title">Socials</h3>
+                            <h3 className="sm-socials-title">{socialsTitle}</h3>
 
                             <ul className="sm-socials-list" role="list">
                                 {socialItems.map((social, index) => (

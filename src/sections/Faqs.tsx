@@ -4,46 +4,24 @@ import Tag from "@/components/Tag";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
+import HighlightText from "@/components/HighlightText";
+import { DEFAULT_CONTENT, type FaqsContent } from "@/lib/cms/defaults";
 
-const faqs = [
-    {
-        question: "What is debt review removal?",
-        answer: "Debt review removal is the process of assisting qualifying consumers to exit debt review once they have met the necessary legal requirements. ClearDebt guides you through the process and helps ensure the required documentation is completed correctly.",
-    },
-    {
-        question: "What is prescribed debt?",
-        answer: "In certain circumstances, debt may prescribe if it meets the requirements set out in South African law. ClearDebt can assess your situation and advise whether any of your debts may qualify for prescription.",
-    },
-    {
-        question: "Can you help remove judgments from my credit record?",
-        answer: "Yes. If you qualify, ClearDebt can assist with the judgment removal process and guide you through the necessary legal and administrative steps to help restore your credit profile.",
-    },
-    {
-        question: "How long does the process take?",
-        answer: "The timeframe depends on the specific service and your individual circumstances. After reviewing your case, our consultants will provide an estimated timeline and keep you informed throughout the process.",
-    },
-    {
-        question: "How do I get started?",
-        answer: "Getting started is simple. Contact ClearDebt for a free consultation, and one of our experienced consultants will assess your situation, explain your options, and recommend the most suitable solution for your needs.",
-    },
-];
-
-export default function Faqs() {
+export default function Faqs({ content = DEFAULT_CONTENT.faqs }: { content?: FaqsContent }) {
     const [selectedIndex, setSelectedIndex] = useState(0);
     return (
         <section className="py-24">
             <div className="container">
                 <div className="flex justify-center">
-                    <Tag>FAQs</Tag>
+                    <Tag>{content.tag}</Tag>
                 </div>
                 <h2 className="text-6xl font-medium mt-6 text-center max-w-xl mx-auto">
-                    Questions? We&apos;ve got{" "}
-                    <span className="text-fuchsia-400">answers</span>
+                    <HighlightText value={content.heading} />
                 </h2>
                 <div className="mt-12 flex flex-col gap-6 max-w-xl mx-auto">
-                    {faqs.map((faq, faqIndex) => (
+                    {content.items.map((faq, faqIndex) => (
                         <div
-                            key={faq.question}
+                            key={faqIndex}
                             className="bg-neutral-900 rounded-2xl border border-white/10 p-6"
                         >
                             <div
@@ -82,7 +60,7 @@ export default function Faqs() {
                                         exit={{ height: 0, marginTop: 0 }}
                                         className={twMerge("overflow-hidden")}
                                     >
-                                        <p className="text-white/50">
+                                        <p className="text-white/50 whitespace-pre-line">
                                             {faq.answer}
                                         </p>
                                     </motion.div>

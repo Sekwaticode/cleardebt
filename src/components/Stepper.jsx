@@ -12,6 +12,7 @@ export default function Stepper({
   onFinalStepCompleted,
   backButtonText = "Previous",
   nextButtonText = "Next",
+  finishButtonText = "Finish",
 }) {
   const steps = Children.toArray(children).filter(isValidElement);
   const total = steps.length;
@@ -91,7 +92,7 @@ export default function Stepper({
           className="stepper-btn primary"
           onClick={handleNext}
         >
-          {current >= total ? "Finish" : nextButtonText}
+          {current >= total ? finishButtonText : nextButtonText}
         </button>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/portal.css";
+import "@/styles/cms.css";
 import { ToastProvider } from "@/components/portal/Toast";
 
 export const metadata: Metadata = {

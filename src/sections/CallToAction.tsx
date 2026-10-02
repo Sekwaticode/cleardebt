@@ -2,8 +2,9 @@
 
 import { motion, useAnimate, AnimationPlaybackControls } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { DEFAULT_CONTENT, type CallToActionContent } from "@/lib/cms/defaults";
 
-export default function CallToAction() {
+export default function CallToAction({ content = DEFAULT_CONTENT.callToAction }: { content?: CallToActionContent }) {
     const [isHovered, setIsHovered] = useState(false);
     const animation = useRef<AnimationPlaybackControls>();
     const [scope, animate] = useAnimate();
@@ -44,7 +45,7 @@ export default function CallToAction() {
                             <span className="text-fuchsia-400 text-7xl ">
                                 &#10038;
                             </span>
-                            <span className="group-hover:text-fuchsia-400">Get a free credit check!</span>
+                            <span className="group-hover:text-fuchsia-400">{content.text}</span>
                         </div>
                     ))}
                 </motion.div>

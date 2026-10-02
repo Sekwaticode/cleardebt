@@ -50,7 +50,9 @@
 .sm-toggle {
   position: relative;
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
+  white-space: nowrap;
   gap: 0.3rem;
   background: transparent;
   border: none;
@@ -112,13 +114,12 @@
 
 .sm-icon-line {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 100%;
+  left: 0;
+  top: calc(50% - 1px);
+  width: 14px;
   height: 2px;
   background: currentColor;
   border-radius: 2px;
-  transform: translate(-50%, -50%);
   will-change: transform;
 }
 
@@ -271,7 +272,7 @@
   position: relative;
   color: #000;
   font-weight: 600;
-  font-size: 3.5rem;
+  font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.5rem);
   cursor: pointer;
   line-height: 1;
   letter-spacing: -2px;
@@ -281,7 +282,7 @@
     color 0.25s;
   display: inline-block;
   text-decoration: none;
-  padding-right: 1.4em;
+  padding-right: 1.6em;
 }
 
 .staggered-menu-panel .sm-socials-list .sm-socials-link {
@@ -321,7 +322,7 @@
   content: counter(smItem, decimal-leading-zero);
   position: absolute;
   top: 0.1em;
-  right: 2.8em;
+  right: 0;
   font-size: 18px;
   font-weight: 400;
   color: var(--sm-accent, #5227ff);

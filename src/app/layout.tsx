@@ -3,20 +3,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script"
 import "./globals.css";
 import StaggeredMenu from "@/sections/StaggeredMenu";
-
-const menuItems = [
-  { label: "Home", ariaLabel: "Go to home page", link: "/" },
-  { label: "About", ariaLabel: "Learn about us", link: "/about" },
-  { label: "Testimonials", ariaLabel: "View our testimonials", link: "/testimonials" },
-  { label: "Contact", ariaLabel: "Get in touch", link: "/contact" },
-  { label: "Forms", ariaLabel: "Sign in to complete your forms", link: "/forms" },
-];
-
-const socialItems = [
-  { label: "Facebook", link: "https://www.facebook.com/profile.php?id=61574247381160" },
-  { label: "Whatsapp", link: "https://api.whatsapp.com/send/?phone=27793932311&text&type=phone_number&app_absent=0" },
-  { label: "TikTok", link: "https://www.tiktok.com/@clear.debt" },
-];
+import { getSiteContent } from "@/lib/cms/content";
 
 const inter = Inter({
     variable: "--font-inter",
@@ -30,19 +17,24 @@ export const metadata: Metadata = {
     description: "",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const { staggeredMenu: menu } = await getSiteContent();
     return (
         <html lang="en">
              
         <body className={`${inter.variable} font-sans antialiased text-white relative`}>
       <StaggeredMenu
                     position="right"
-                    items={menuItems}
-                    socialItems={socialItems}
+                    items={menu.items}
+                    socialItems={menu.socials}
+                    menuText={menu.menuText}
+                    closeText={menu.closeText}
+                    socialsTitle={menu.socialsTitle}
+                    logo={menu.logo}
                     displaySocials
                     displayItemNumbering
                     menuButtonColor="#ffffff"

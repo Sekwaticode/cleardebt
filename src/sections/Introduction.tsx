@@ -5,15 +5,12 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 
 import Tag from "@/components/Tag";
-import logoImage from "@/assets/images/logo.jpeg";
+import { DEFAULT_CONTENT, type IntroductionContent } from "@/lib/cms/defaults";
 
 import { twMerge } from "tailwind-merge";
 
-const text = `legally and effectively clear their debt records. From removing outdated or unlawful listings to providing expert credit advice, our goal is to restore your financial freedom and empower you to move forward with financial confidence.`;
-
-const words = text.split(" ");
-
-export default function Introduction() {
+export default function Introduction({ content = DEFAULT_CONTENT.introduction }: { content?: IntroductionContent }) {
+    const words = content.revealText.split(/\s+/).filter(Boolean);
     const scrollTarget = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({
@@ -38,16 +35,17 @@ export default function Introduction() {
             <div className="container">
                 <div className="sticky top-20 md:top-28 lg:top-32">
                     <div className="flex justify-center mb-12 lg:mb-16">
-                        <Tag>Introducing Clear Debt</Tag>
+                        <Tag>{content.tag}</Tag>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                         {/* Logo / Image */}
                         <div className="flex justify-center lg:justify-start">
                             <div className="relative rounded-3xl shadow-2xl w-56 h-56 md:w-72 md:h-72 lg:w-[380px] lg:h-[380px] overflow-hidden">
                                 <Image
-                                    src={logoImage}
-                                    alt="Clear Debt"
+                                    src={content.image.src}
+                                    alt={content.image.alt}
                                     fill
+                                    sizes="(min-width: 1024px) 380px, (min-width: 768px) 288px, 224px"
                                     className="object-contain"
                                     priority
                                 />
@@ -58,7 +56,7 @@ export default function Introduction() {
                         <div>
                             <div className="text-2xl 3xlmd:text- lg:text-4xl leading-[1.15] font-medium">
                                 <span>
-                                    At Clear Debt, we help South Africans
+                                    {content.leadText}
                                 </span>{" "}
                                 <span className="text-white/15">
                                     {words.map((word, wordIndex) => (
@@ -75,7 +73,7 @@ export default function Introduction() {
                                     ))}
                                 </span>
                                 <span className="text-fuchsia-400 block mt-6">
-                                    We&apos;re here to help.
+                                    {content.closingText}
                                 </span>
                             </div>
                         </div>

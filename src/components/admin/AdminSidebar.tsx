@@ -20,6 +20,19 @@ const NAV = [
     },
 ];
 
+const CMS_NAV = [
+    {
+        href: "/admin/content",
+        label: "Website content",
+        icon: <path d="M4 5h16M4 10h16M4 15h10M4 20h7m9-4.5-4.5 4.5H14v-1.5l4.5-4.5 1.5 1.5Z" />,
+    },
+    {
+        href: "/admin/media",
+        label: "Media library",
+        icon: <path d="M4 5h16v14H4V5Zm0 10 4.5-4.5 4 4 2.5-2.5L20 17M15.5 9.5h.01" />,
+    },
+];
+
 export default function AdminSidebar({ email }: { email: string }) {
     const pathname = usePathname();
     return (
@@ -28,7 +41,7 @@ export default function AdminSidebar({ email }: { email: string }) {
                 <Image src={logo} alt="" width={34} height={34} />
                 <div>
                     <strong>Clear Debt</strong>
-                    <span>Submissions console</span>
+                    <span>Admin console</span>
                 </div>
             </div>
             <nav className="cd-nav" aria-label="Admin">
@@ -44,7 +57,18 @@ export default function AdminSidebar({ email }: { email: string }) {
                         </Link>
                     );
                 })}
-                <div className="cd-nav-label">Site</div>
+                <div className="cd-nav-label">Website</div>
+                {CMS_NAV.map((item) => {
+                    const active = pathname.startsWith(item.href);
+                    return (
+                        <Link key={item.href} href={item.href} className={active ? "is-active" : undefined} aria-current={active ? "page" : undefined}>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                                {item.icon}
+                            </svg>
+                            {item.label}
+                        </Link>
+                    );
+                })}
                 <Link href="/">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                         <path d="M3 10.5 12 3l9 7.5V21H3V10.5Z" />
