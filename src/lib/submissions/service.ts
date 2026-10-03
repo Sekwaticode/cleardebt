@@ -5,7 +5,10 @@ import { HttpError, isUuid } from "@/lib/http";
 import { createServiceClient } from "@/lib/supabase/admin";
 import { renderSubmissionPdf } from "@/lib/pdf/generate";
 import {
+    adminOnlyFields,
+    adminOnlySignatures,
     allSignatures,
+    clientNameOf,
     getDefinition,
     isStatus,
     type SubmissionStatus,
@@ -160,7 +163,8 @@ export async function saveSubmission(ctx: SessionContext, input: SaveSubmissionI
     const { values, errors } = sanitizeValues(def, input.fields, submit);
 
     // Decode signature changes up front so a bad image fails before any write.
-    const allowedPads = new Set(allSignatures(def).map((s) => s.name));
+    // Clear Debt's own pads are signed from the admin only, so clients can't set them.
+    const allowedPads = new Set(allSignatures(def).filter((s) => !s.adminOnly).map((s) => s.name));
     const sigChanges: Record<string, Uint8Array | null> = {};
     for (const [name, value] of Object.entries(input.signatures ?? {})) {
         if (!allowedPads.has(name)) continue;
@@ -169,12 +173,12 @@ export async function saveSubmission(ctx: SessionContext, input: SaveSubmissionI
     }
 
     // Ownership check through RLS: the row must be visible to, and owned by, this user.
-    let existing: Pick<SubmissionRow, "id" | "reference" | "status" | "user_id" | "form_type"> | null = null;
+    let existing: Pick<SubmissionRow, "id" | "reference" | "status" | "user_id" | "form_type" | "fields"> | null = null;
     if (input.id !== undefined && input.id !== null) {
         if (!isUuid(input.id)) throw new HttpError(404, "We couldn't find that submission.");
         const { data, error } = await ctx.supabase
             .from("submissions")
-            .select("id, reference, status, user_id, form_type")
+            .select("id, reference, status, user_id, form_type, fields")
             .eq("id", input.id)
             .maybeSingle();
         if (error) throw error;
@@ -184,6 +188,13 @@ export async function saveSubmission(ctx: SessionContext, input: SaveSubmissionI
             throw new HttpError(409, "This form has already been submitted and can no longer be edited.", { id: data.id });
         }
         existing = data;
+    }
+
+    // Admin-only fields keep whatever Clear Debt stored; anything the client sent is ignored.
+    for (const f of adminOnlyFields(def)) {
+        const stored = existing?.fields?.[f.name];
+        values[f.name] = typeof stored === "string" ? stored : "";
+        delete errors[f.name];
     }
 
     const service = createServiceClient();
@@ -213,7 +224,7 @@ export async function saveSubmission(ctx: SessionContext, input: SaveSubmissionI
     const columns = {
         form_type: def.id,
         fields: values,
-        client_name: text(def.indexed.clientName) || null,
+        client_name: clientNameOf(def, values) || null,
         id_number: text(def.indexed.idNumber) || null,
         phone: text(def.indexed.phone) || null,
         email: text(def.indexed.email) || null,
@@ -279,6 +290,72 @@ export async function saveSubmission(ctx: SessionContext, input: SaveSubmissionI
     }
 
     return { id: row.id, reference: row.reference, status: "submitted", updatedAt: submitted.updated_at, pdfReady };
+}
+
+/* ----------------------------------------------------------
+   Clear Debt's part of a form (admin only)
+   ---------------------------------------------------------- */
+
+/**
+ * Saves the fields and signatures marked `adminOnly` (e.g. "For Clear Debt
+ * (Name)" and the Clear Debt signature) and, for submitted forms, rebuilds
+ * the PDF so it includes them. Callers must already be verified admins.
+ */
+export async function updateAdminSection(
+    ctx: SessionContext,
+    id: string,
+    input: { fields?: unknown; signatures?: Record<string, unknown> },
+): Promise<{ pdfReady: boolean }> {
+    if (!isUuid(id)) throw new HttpError(404, "Submission not found.");
+    const { data: current, error } = await ctx.supabase
+        .from("submissions")
+        .select("id, reference, status, user_id, form_type, fields")
+        .eq("id", id)
+        .maybeSingle();
+    if (error) throw error;
+    if (!current) throw new HttpError(404, "Submission not found.");
+
+    const def = getDefinition(current.form_type);
+    if (!def) throw new HttpError(400, "Unknown form type.");
+    const fieldDefs = adminOnlyFields(def);
+    const padNames = new Set(adminOnlySignatures(def).map((s) => s.name));
+    if (!fieldDefs.length && !padNames.size) throw new HttpError(400, "This form has no Clear Debt section.");
+
+    const { values, errors } = sanitizeValues(def, input.fields, true, fieldDefs);
+    const sigChanges: Record<string, Uint8Array | null> = {};
+    for (const [name, value] of Object.entries(input.signatures ?? {})) {
+        if (!padNames.has(name)) continue;
+        if (value === null) sigChanges[name] = null;
+        else if (typeof value === "string") sigChanges[name] = decodeSignature(name, value);
+    }
+    if (Object.keys(errors).length) {
+        throw new HttpError(422, "Please fix the highlighted fields.", { fieldErrors: errors });
+    }
+
+    const service = createServiceClient();
+    const { error: updErr } = await service
+        .from("submissions")
+        .update({ fields: { ...(current.fields ?? {}), ...values }, updated_by: ctx.user.id })
+        .eq("id", id);
+    if (updErr) throw updErr;
+    await applySignatureChanges(service, current, sigChanges, ctx.user.id);
+
+    await logEvent(service, {
+        submissionId: id,
+        reference: current.reference,
+        actorId: ctx.user.id,
+        action: "admin_section_updated",
+        details: { fields: Object.keys(values), signatures: Object.keys(sigChanges) },
+    });
+
+    if (current.status === "draft") return { pdfReady: false };
+    try {
+        await generateAndStorePdf(id, ctx.user.id);
+        return { pdfReady: true };
+    } catch (err) {
+        console.error("[submissions] PDF regeneration failed after admin update", err);
+        return { pdfReady: false };
+    }
 }
 
 /* ----------------------------------------------------------

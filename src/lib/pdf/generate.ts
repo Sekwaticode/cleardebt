@@ -211,7 +211,7 @@ function drawOptionList(w: PdfWriter, field: FieldDef, selected: unknown) {
     w.ensure(14);
     w.text(field.label.toUpperCase(), { size: 7.5, font: w.bold, color: C.muted });
     w.y -= 13;
-    for (const opt of field.options ?? []) {
+    for (const opt of (field.options ?? []).filter((o) => !o.retired || picked.has(o.value))) {
         const h = w.measure(opt.label, 10, CONTENT_W - 18) + 4;
         w.ensure(h);
         w.checkbox(MARGIN, w.y, picked.has(opt.value));

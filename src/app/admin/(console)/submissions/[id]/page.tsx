@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireAdminPage } from "@/lib/auth";
-import { allFields, formatDateTime, formatFieldValue, getDefinition, type Block, type FieldDef } from "@/lib/forms/definitions";
+import { adminOnlyFields, adminOnlySignatures, allFields, formatDateTime, formatFieldValue, getDefinition, type Block, type FieldDef } from "@/lib/forms/definitions";
 import { isUuid } from "@/lib/http";
 import { createServiceClient } from "@/lib/supabase/admin";
 import { loadSignatureDataUrls } from "@/lib/submissions/service";
 import type { SubmissionEventRow, SubmissionFileRow, SubmissionRow } from "@/lib/submissions/types";
-import { DeleteSubmission, PdfPanel, StatusForm } from "@/components/admin/SubmissionActions";
+import { ClearDebtSection, DeleteSubmission, PdfPanel, StatusForm } from "@/components/admin/SubmissionActions";
 import StatusBadge from "@/components/portal/StatusBadge";
 
 export const dynamic = "force-dynamic";
@@ -19,6 +19,7 @@ const EVENT_LABELS: Record<string, string> = {
     pdf_generated: "PDF generated",
     pdf_regenerated: "PDF regenerated",
     pdf_failed: "PDF generation failed",
+    admin_section_updated: "Clear Debt section updated",
 };
 
 export default async function SubmissionDetail({ params }: { params: { id: string } }) {
@@ -57,6 +58,8 @@ export default async function SubmissionDetail({ params }: { params: { id: strin
     const knownNames = new Set(def ? allFields(def).map((f) => f.name) : []);
     const extra = Object.entries(fields).filter(([k]) => !knownNames.has(k));
     const attachments = files.filter((f) => f.kind === "attachment");
+    const companyFields = def ? adminOnlyFields(def) : [];
+    const companySignatures = def ? adminOnlySignatures(def) : [];
 
     return (
         <>
@@ -103,6 +106,27 @@ export default async function SubmissionDetail({ params }: { params: { id: strin
                             </div>
                         </section>
                     ))}
+
+                    {(companyFields.length > 0 || companySignatures.length > 0) && (
+                        <section className="cd-card">
+                            <div className="cd-card-header">
+                                <div>
+                                    <h2>Clear Debt section</h2>
+                                    <p>Only admins can complete this part. Saving updates the client&apos;s PDF.</p>
+                                </div>
+                            </div>
+                            <div className="cd-card-body">
+                                <ClearDebtSection
+                                    id={s.id}
+                                    fields={companyFields.map((f) => ({ name: f.name, label: f.label }))}
+                                    signatures={companySignatures.map((x) => ({ name: x.name, label: x.label, hint: x.hint }))}
+                                    values={Object.fromEntries(companyFields.map((f) => [f.name, typeof fields[f.name] === "string" ? (fields[f.name] as string) : ""]))}
+                                    existingSignatures={Object.fromEntries(companySignatures.filter((x) => signatures[x.name]).map((x) => [x.name, signatures[x.name]]))}
+                                    submitted={s.status !== "draft"}
+                                />
+                            </div>
+                        </section>
+                    )}
 
                     {extra.length > 0 && (
                         <section className="cd-card">
@@ -312,7 +336,7 @@ function FieldValueView({ field, value }: { field: FieldDef; value: unknown }) {
         const picked = new Set(Array.isArray(value) ? value.map(String) : []);
         return (
             <ul className="cd-option-list">
-                {field.options?.map((o) => (
+                {field.options?.filter((o) => !o.retired || picked.has(o.value)).map((o) => (
                     <li key={o.value} className={picked.has(o.value) ? "is-on" : undefined}>
                         <span className="cd-tick" aria-hidden>
                             {picked.has(o.value) ? "✓" : ""}

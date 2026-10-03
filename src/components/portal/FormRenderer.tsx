@@ -396,6 +396,26 @@ function BlockView({ block, values, errors, setValue, onBlur, pads, existingSign
             return (
                 <div className={`cd-sig-grid${block.signatures.length === 1 ? " is-single" : ""}`}>
                     {block.signatures.map((sig) => {
+                        if (sig.adminOnly) {
+                            return (
+                                <div key={sig.name} className="cd-field">
+                                    <span className="cd-label">{sig.label}</span>
+                                    <div className="cd-signature-block">
+                                        <div className="cd-signature-title">
+                                            <span>Signed by Clear Debt</span>
+                                        </div>
+                                        {existingSignatures[sig.name] ? (
+                                            // eslint-disable-next-line @next/next/no-img-element
+                                            <img className="cd-signature-img" src={existingSignatures[sig.name]} alt={sig.label} />
+                                        ) : (
+                                            <div className="cd-empty" style={{ padding: "48px 12px" }}>
+                                                Clear Debt will sign here once your form is received.
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            );
+                        }
                         const error = errors[sigKey(sig.name)];
                         return (
                             <div key={sig.name} className={`cd-field${error ? " has-error" : ""}`} id={`fld-signature-${sig.name}`}>
@@ -459,6 +479,16 @@ function FieldView({ field, value, error, setValue, onBlur }: FieldProps) {
         </>
     );
 
+    if (field.adminOnly) {
+        const shown = typeof value === "string" && value ? value : "";
+        return (
+            <div className={cls}>
+                <label htmlFor={id}>{field.label}</label>
+                <input id={id} className="cd-input" type="text" value={shown} placeholder="Completed by Clear Debt" readOnly tabIndex={-1} aria-readonly />
+            </div>
+        );
+    }
+
     if (field.type === "checkboxGroup") {
         const selected = Array.isArray(value) ? value : [];
         return (
@@ -467,7 +497,7 @@ function FieldView({ field, value, error, setValue, onBlur }: FieldProps) {
                     {field.label}
                 </span>
                 <div className="cd-check-list">
-                    {field.options?.map((opt) => (
+                    {field.options?.filter((opt) => !opt.retired).map((opt) => (
                         <label className="cd-check" key={opt.value}>
                             <input
                                 type="checkbox"
@@ -581,8 +611,11 @@ function autoCompleteFor(field: FieldDef): string {
     switch (field.name) {
         case "fullName":
         case "consumerFullName":
-        case "principalFullName":
             return "name";
+        case "principalFirstName":
+            return "given-name";
+        case "principalSurname":
+            return "family-name";
         case "email":
         case "consumerEmail":
             return "email";

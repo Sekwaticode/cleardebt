@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { STATUSES, STATUS_LABELS, type SubmissionStatus } from "@/lib/forms/definitions";
 import { useToast } from "@/components/portal/Toast";
+import { SignaturePad, type SignaturePadHandle } from "@/components/portal/SignaturePad";
 
 async function call(url: string, init: RequestInit): Promise<{ ok: boolean; error?: string }> {
     try {
@@ -107,7 +108,7 @@ export function PdfPanel({ id, available, generatedAt, error }: { id: string; av
             </div>
             {generatedAt && <span className="cd-muted" style={{ fontSize: 12.5 }}>Last generated {generatedAt}</span>}
             {available || version > 0 ? (
-                <iframe key={version} className="cd-pdf-frame" src={`${url}#view=FitH`} title="Submission PDF preview" />
+                <iframe key={`${version}-${generatedAt ?? ""}`} className="cd-pdf-frame" src={`${url}#view=FitH`} title="Submission PDF preview" />
             ) : (
                 <div className="cd-empty" style={{ border: "1px dashed var(--cd-border-strong)", borderRadius: 8 }}>
                     <h3>No PDF stored yet</h3>
@@ -171,5 +172,126 @@ export function DeleteSubmission({ id, reference }: { id: string; reference: str
                 </div>
             )}
         </>
+    );
+}
+
+/** The parts of a form only Clear Debt completes, e.g. the representative's name and signature. */
+export function ClearDebtSection({
+    id,
+    fields,
+    signatures,
+    values,
+    existingSignatures,
+    submitted,
+}: {
+    id: string;
+    fields: { name: string; label: string }[];
+    signatures: { name: string; label: string; hint: string }[];
+    values: Record<string, string>;
+    existingSignatures: Record<string, string>;
+    submitted: boolean;
+}) {
+    const router = useRouter();
+    const toast = useToast();
+    const [form, setForm] = useState<Record<string, string>>(values);
+    const [busy, setBusy] = useState(false);
+    const [errors, setErrors] = useState<Record<string, string>>({});
+    const [changed, setChanged] = useState(false);
+    const pads = useRef<Record<string, SignaturePadHandle | null>>({});
+
+    const save = async () => {
+        const sigs: Record<string, string | null> = {};
+        for (const s of signatures) {
+            const pad = pads.current[s.name];
+            if (pad?.isDirty()) sigs[s.name] = pad.isEmpty() ? null : pad.toDataURL();
+        }
+        setBusy(true);
+        try {
+            const res = await fetch(`/api/admin/submissions/${id}/clear-debt`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ fields: form, signatures: sigs }),
+            });
+            const body = await res.json().catch(() => ({}));
+            if (res.status === 401) {
+                window.location.href = `/admin/login?next=${encodeURIComponent(window.location.pathname)}`;
+                return;
+            }
+            if (!res.ok) {
+                setErrors(body.fieldErrors ?? {});
+                return toast(body.error ?? "Couldn't save the Clear Debt section.", "error");
+            }
+            setErrors({});
+            Object.values(pads.current).forEach((p) => p?.markClean());
+            setChanged(false);
+            toast(
+                submitted
+                    ? body.pdfReady
+                        ? "Saved. The PDF now includes Clear Debt's details."
+                        : "Saved, but the PDF couldn't be rebuilt. Use “Regenerate PDF” to try again."
+                    : "Saved.",
+                body.pdfReady || !submitted ? "success" : "error",
+            );
+            router.refresh();
+        } catch {
+            toast("Couldn't reach the server — check your connection.", "error");
+        } finally {
+            setBusy(false);
+        }
+    };
+
+    return (
+        <div className="cd-stack">
+            {fields.map((f) => (
+                <div key={f.name} className={`cd-field${errors[f.name] ? " has-error" : ""}`}>
+                    <label htmlFor={`cds-${f.name}`}>{f.label}</label>
+                    <input
+                        id={`cds-${f.name}`}
+                        className="cd-input"
+                        maxLength={300}
+                        value={form[f.name] ?? ""}
+                        onChange={(e) => {
+                            setChanged(true);
+                            setForm((v) => ({ ...v, [f.name]: e.target.value }));
+                        }}
+                    />
+                    <div className="cd-error-msg">{errors[f.name]}</div>
+                </div>
+            ))}
+            {signatures.map((s) => (
+                <div key={s.name} className={`cd-field${errors[`signature:${s.name}`] ? " has-error" : ""}`}>
+                    <span className="cd-label">{s.label}</span>
+                    <div className="cd-signature-block">
+                        <div className="cd-signature-title">
+                            <span>{s.hint}</span>
+                            {existingSignatures[s.name] && <span>Saved signature loaded</span>}
+                        </div>
+                        <SignaturePad
+                            ref={(h) => {
+                                pads.current[s.name] = h;
+                            }}
+                            label={s.label}
+                            initialImage={existingSignatures[s.name]}
+                            onChange={() => setChanged(true)}
+                        />
+                        <div className="cd-signature-actions">
+                            <button type="button" className="cd-btn cd-btn-sm cd-btn-outline" onClick={() => pads.current[s.name]?.undo()}>
+                                Undo
+                            </button>
+                            <button type="button" className="cd-btn cd-btn-sm cd-btn-outline" onClick={() => pads.current[s.name]?.clear()}>
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                    <div className="cd-error-msg">{errors[`signature:${s.name}`]}</div>
+                </div>
+            ))}
+            <div className="cd-actions">
+                <button type="button" className="cd-btn cd-btn-primary" onClick={save} disabled={busy || !changed}>
+                    {busy && <span className="cd-spinner" aria-hidden />}
+                    Save Clear Debt section
+                </button>
+            </div>
+        </div>
     );
 }

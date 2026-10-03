@@ -31,6 +31,8 @@ export interface FieldOption {
     value: string;
     label: string;
     description?: string;
+    /** No longer offered. Kept so older submissions that picked it still display its label. */
+    retired?: boolean;
 }
 
 export interface FieldDef {
@@ -49,6 +51,8 @@ export interface FieldDef {
     /** Supporting line under a single checkbox (the original "check-desc"). */
     description?: string;
     maxLength?: number;
+    /** Completed by Clear Debt staff from the admin; read-only for clients and ignored if they send it. */
+    adminOnly?: boolean;
 }
 
 export interface SignatureDef {
@@ -56,6 +60,8 @@ export interface SignatureDef {
     label: string;
     hint: string;
     required?: boolean;
+    /** Signed by Clear Debt staff from the admin; clients can't draw on it. */
+    adminOnly?: boolean;
 }
 
 export type Block =
@@ -88,7 +94,8 @@ export interface FormDefinition {
     successMessage: string;
     /** Which fields feed the indexed, searchable columns on `submissions`. */
     indexed: {
-        clientName: string;
+        /** One field, or several joined with spaces (e.g. name + surname). */
+        clientName: string | string[];
         idNumber: string;
         phone: string;
         email?: string;
@@ -174,7 +181,8 @@ const clientContract: FormDefinition = {
                                 { value: "removal_debt_review", label: "Removal from debt review", description: "The process of clearing your name from debt review once you qualify, so you can regain full financial freedom." },
                                 { value: "credit_bureau_updates", label: "Credit bureau updates", description: "Ensures your credit profile reflects correct and up-to-date information, removing outdated or incorrect listings." },
                                 { value: "restructuring_payments", label: "Restructuring of monthly payments", description: "We help reorganise your debts and monthly payments to make them more manageable." },
-                                { value: "financial_credit_advice", label: "Financial & credit advice", description: "Expert guidance on managing money, budgeting, reducing debt and planning for the future." },
+                                { value: "administration_order", label: "Administration order", description: "We help you apply to the court to rescind (cancel) your administration order once you qualify, so the administrator is removed and your credit bureau records are updated to show the order has been lifted." },
+                                { value: "financial_credit_advice", label: "Financial & credit advice", retired: true },
                             ],
                         },
                     ],
@@ -247,8 +255,8 @@ const clientContract: FormDefinition = {
                     ],
                 },
                 { kind: "signatures", signatures: [{ name: "clientSignature", label: "Client Signature", hint: "Sign inside the box", required: true }] },
-                { kind: "fields", fields: [{ name: "clearDebtRep", label: "For Clear Debt (Name)", type: "text", span: 2 }] },
-                { kind: "signatures", signatures: [{ name: "clearDebtSignature", label: "Clear Debt Signature", hint: "Representative signature" }] },
+                { kind: "fields", fields: [{ name: "clearDebtRep", label: "For Clear Debt (Name)", type: "text", span: 2, adminOnly: true }] },
+                { kind: "signatures", signatures: [{ name: "clearDebtSignature", label: "Clear Debt Signature", hint: "Representative signature", adminOnly: true }] },
             ],
         },
     ],
@@ -378,7 +386,7 @@ const powerOfAttorney: FormDefinition = {
     submitLabel: "Submit POA",
     successTitle: "Power of Attorney submitted",
     successMessage: "Your power of attorney has been recorded and your executed copy is ready.",
-    indexed: { clientName: "principalFullName", idNumber: "principalIdNumber", phone: "principalPhone" },
+    indexed: { clientName: ["principalFirstName", "principalSurname"], idNumber: "principalIdNumber", phone: "principalPhone" },
     sections: [
         {
             id: "principal",
@@ -390,7 +398,8 @@ const powerOfAttorney: FormDefinition = {
                 {
                     kind: "fields",
                     fields: [
-                        { name: "principalFullName", label: "Full Name of Principal", type: "text", rules: ["required"], span: 2 },
+                        { name: "principalFirstName", label: "Name(s) of Principal", type: "text", rules: ["required"] },
+                        { name: "principalSurname", label: "Surname of Principal", type: "text", rules: ["required"] },
                         { name: "principalIdNumber", label: "Identity Number", type: "text", rules: ["required", "saId"], inputMode: "numeric" },
                         { name: "principalPhone", label: "Contact Number", type: "tel", rules: ["tel"] },
                         { name: "principalAddress", label: "Residential Address", type: "text", rules: ["required"], span: 2 },
@@ -408,8 +417,8 @@ const powerOfAttorney: FormDefinition = {
                 {
                     kind: "fields",
                     fields: [
-                        { name: "agentFullName", label: "Full Name of Agent", type: "text", rules: ["required"], span: 2 },
-                        { name: "agentIdNumber", label: "Identity Number", type: "text", rules: ["required", "saId"], inputMode: "numeric" },
+                        { name: "agentFullName", label: "Full Name of Agent", type: "text", span: 2 },
+                        { name: "agentIdNumber", label: "Identity Number", type: "text", rules: ["saId"], inputMode: "numeric" },
                         { name: "agentCompany", label: "Company / Firm / Institution", type: "text", defaultValue: COMPANY.name },
                     ],
                 },
@@ -523,6 +532,23 @@ export function allSignatures(def: FormDefinition): SignatureDef[] {
     return def.sections.flatMap((s) =>
         s.blocks.flatMap((b) => (b.kind === "signatures" ? b.signatures : [])),
     );
+}
+
+export function adminOnlyFields(def: FormDefinition): FieldDef[] {
+    return allFields(def).filter((f) => f.adminOnly);
+}
+
+export function adminOnlySignatures(def: FormDefinition): SignatureDef[] {
+    return allSignatures(def).filter((s) => s.adminOnly);
+}
+
+/** The client's name as stored in the indexed `client_name` column. */
+export function clientNameOf(def: FormDefinition, values: Record<string, unknown>): string {
+    const keys = Array.isArray(def.indexed.clientName) ? def.indexed.clientName : [def.indexed.clientName];
+    return keys
+        .map((k) => (typeof values[k] === "string" ? (values[k] as string).trim() : ""))
+        .filter(Boolean)
+        .join(" ");
 }
 
 export function defaultValues(def: FormDefinition): FormValues {
