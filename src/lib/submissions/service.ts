@@ -163,7 +163,7 @@ export async function saveSubmission(ctx: SessionContext, input: SaveSubmissionI
     const { values, errors } = sanitizeValues(def, input.fields, submit);
 
     // Decode signature changes up front so a bad image fails before any write.
-    // Clear Debt's own pads are signed from the admin only, so clients can't set them.
+    // Debt Counsellors's own pads are signed from the admin only, so clients can't set them.
     const allowedPads = new Set(allSignatures(def).filter((s) => !s.adminOnly).map((s) => s.name));
     const sigChanges: Record<string, Uint8Array | null> = {};
     for (const [name, value] of Object.entries(input.signatures ?? {})) {
@@ -190,7 +190,7 @@ export async function saveSubmission(ctx: SessionContext, input: SaveSubmissionI
         existing = data;
     }
 
-    // Admin-only fields keep whatever Clear Debt stored; anything the client sent is ignored.
+    // Admin-only fields keep whatever Debt Counsellors stored; anything the client sent is ignored.
     for (const f of adminOnlyFields(def)) {
         const stored = existing?.fields?.[f.name];
         values[f.name] = typeof stored === "string" ? stored : "";
@@ -293,12 +293,12 @@ export async function saveSubmission(ctx: SessionContext, input: SaveSubmissionI
 }
 
 /* ----------------------------------------------------------
-   Clear Debt's part of a form (admin only)
+   Debt Counsellors's part of a form (admin only)
    ---------------------------------------------------------- */
 
 /**
- * Saves the fields and signatures marked `adminOnly` (e.g. "For Clear Debt
- * (Name)" and the Clear Debt signature) and, for submitted forms, rebuilds
+ * Saves the fields and signatures marked `adminOnly` (e.g. "For Debt Counsellors
+ * (Name)" and the Debt Counsellors signature) and, for submitted forms, rebuilds
  * the PDF so it includes them. Callers must already be verified admins.
  */
 export async function updateAdminSection(
@@ -319,7 +319,7 @@ export async function updateAdminSection(
     if (!def) throw new HttpError(400, "Unknown form type.");
     const fieldDefs = adminOnlyFields(def);
     const padNames = new Set(adminOnlySignatures(def).map((s) => s.name));
-    if (!fieldDefs.length && !padNames.size) throw new HttpError(400, "This form has no Clear Debt section.");
+    if (!fieldDefs.length && !padNames.size) throw new HttpError(400, "This form has no Debt Counsellors section.");
 
     const { values, errors } = sanitizeValues(def, input.fields, true, fieldDefs);
     const sigChanges: Record<string, Uint8Array | null> = {};

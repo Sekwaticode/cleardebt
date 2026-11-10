@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { safeNext } from "@/lib/auth";
 import AuthForm from "@/components/portal/AuthForm";
-import logo from "@/assets/images/logo.jpeg";
+import logo from "@/assets/images/celestial.svg";
 
-export const metadata: Metadata = { title: "Admin sign in — Clear Debt" };
+export const metadata: Metadata = { title: "Admin sign in — Debt Counsellors" };
 
 export default function AdminLoginPage({ searchParams }: { searchParams: { next?: string; error?: string } }) {
     const next = safeNext(searchParams.next, "/admin");
@@ -14,7 +14,7 @@ export default function AdminLoginPage({ searchParams }: { searchParams: { next?
                 <div style={{ display: "flex", alignItems: "center", gap: 12, justifyContent: "center", marginBottom: 20, color: "#fff" }}>
                     <Image src={logo} alt="" width={44} height={44} style={{ borderRadius: "50%" }} />
                     <div>
-                        <strong style={{ display: "block", fontSize: 16 }}>Clear Debt</strong>
+                        <strong style={{ display: "block", fontSize: 16 }}>Debt Counsellors</strong>
                         <span style={{ fontSize: 12, opacity: 0.7 }}>Submissions console</span>
                     </div>
                 </div>

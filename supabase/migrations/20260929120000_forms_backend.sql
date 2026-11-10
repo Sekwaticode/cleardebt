@@ -1,5 +1,5 @@
 -- =====================================================================
--- Clear Debt — forms backend
+-- Debt Counsellors — forms backend
 --
 -- Upgrades the pre-existing `submissions` table (created by the old static
 -- site: reference, form_type, status, client_name, id_number, phone, email,

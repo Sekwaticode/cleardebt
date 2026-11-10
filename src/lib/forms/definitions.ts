@@ -51,7 +51,7 @@ export interface FieldDef {
     /** Supporting line under a single checkbox (the original "check-desc"). */
     description?: string;
     maxLength?: number;
-    /** Completed by Clear Debt staff from the admin; read-only for clients and ignored if they send it. */
+    /** Completed by Debt Counsellors staff from the admin; read-only for clients and ignored if they send it. */
     adminOnly?: boolean;
 }
 
@@ -60,7 +60,7 @@ export interface SignatureDef {
     label: string;
     hint: string;
     required?: boolean;
-    /** Signed by Clear Debt staff from the admin; clients can't draw on it. */
+    /** Signed by Debt Counsellors staff from the admin; clients can't draw on it. */
     adminOnly?: boolean;
 }
 
@@ -104,7 +104,7 @@ export interface FormDefinition {
 }
 
 export const COMPANY = {
-    name: "Clear Debt (Pty) Ltd",
+    name: "Debt Counsellors (Pty) Ltd",
     registration: "2025/687143/07",
     address: "Office no 424 Richards Bay 3900",
     email: "info@clear-debt.co.za",
@@ -117,7 +117,7 @@ const clientContract: FormDefinition = {
     title: "Client Contract",
     heading: "Debt Assistance Agreement",
     intro: "Complete every section below. Fields marked with an asterisk are required. You can save a draft at any time and come back to finish it.",
-    summary: "Debt assistance agreement between Clear Debt (Pty) Ltd and the client.",
+    summary: "Debt assistance agreement between Debt Counsellors (Pty) Ltd and the client.",
     submitLabel: "Submit Contract",
     successTitle: "Contract submitted",
     successMessage: "Your debt assistance agreement has been recorded and your signed copy is ready.",
@@ -227,10 +227,10 @@ const clientContract: FormDefinition = {
                     kind: "paragraphs",
                     items: [
                         { lead: "Duration and Termination.", text: "This Agreement begins on the signature date and continues until completion of services, unless terminated by either party with 7 days’ written notice." },
-                        { lead: "Client Obligations.", text: "The Client must provide all required documents and truthful information and cooperate with Clear Debt to enable service delivery." },
-                        { lead: "Clear Debt Obligations.", text: "Clear Debt will provide the services agreed upon and protect all personal information under the POPI Act." },
+                        { lead: "Client Obligations.", text: "The Client must provide all required documents and truthful information and cooperate with Debt Counsellors to enable service delivery." },
+                        { lead: "Debt Counsellors Obligations.", text: "Debt Counsellors will provide the services agreed upon and protect all personal information under the POPI Act." },
                         { lead: "Dispute Resolution.", text: "Both parties agree to attempt to resolve any disputes through negotiation before pursuing legal remedies." },
-                        { lead: "Liability.", text: "The Client acknowledges that Clear Debt shall not be held responsible for any fees, charges, or costs incurred as a result of a previous debt counsellor, financial institution or any other account. The Client remains fully liable for settling all such fees and obligations directly with the relevant parties." },
+                        { lead: "Liability.", text: "The Client acknowledges that Debt Counsellors shall not be held responsible for any fees, charges, or costs incurred as a result of a previous debt counsellor, financial institution or any other account. The Client remains fully liable for settling all such fees and obligations directly with the relevant parties." },
                     ],
                 },
                 {
@@ -255,8 +255,8 @@ const clientContract: FormDefinition = {
                     ],
                 },
                 { kind: "signatures", signatures: [{ name: "clientSignature", label: "Client Signature", hint: "Sign inside the box", required: true }] },
-                { kind: "fields", fields: [{ name: "clearDebtRep", label: "For Clear Debt (Name)", type: "text", span: 2, adminOnly: true }] },
-                { kind: "signatures", signatures: [{ name: "clearDebtSignature", label: "Clear Debt Signature", hint: "Representative signature", adminOnly: true }] },
+                { kind: "fields", fields: [{ name: "clearDebtRep", label: "For Debt Counsellors (Name)", type: "text", span: 2, adminOnly: true }] },
+                { kind: "signatures", signatures: [{ name: "clearDebtSignature", label: "Debt Counsellors Signature", hint: "Representative signature", adminOnly: true }] },
             ],
         },
     ],
@@ -267,8 +267,8 @@ const counsellorTransfer: FormDefinition = {
     slug: "debt-counsellor-transfer",
     title: "Debt Counsellor Transfer",
     heading: "Debt Counsellor Transfer Form",
-    intro: "Request the transfer of a consumer under debt review from their current counsellor to Clear Debt.",
-    summary: "Transfer a consumer from a previous debt counsellor to Clear Debt.",
+    intro: "Request the transfer of a consumer under debt review from their current counsellor to Debt Counsellors.",
+    summary: "Transfer a consumer from a previous debt counsellor to Debt Counsellors.",
     submitLabel: "Submit Transfer",
     successTitle: "Transfer submitted",
     successMessage: "Your transfer request has been recorded and your signed copy is ready.",
@@ -321,7 +321,7 @@ const counsellorTransfer: FormDefinition = {
                     fields: [
                         { name: "newCounsellorName", label: "Debt Counsellor Name", type: "text", defaultValue: "Tasmin Ramkissoon" },
                         { name: "newCounsellorNcr", label: "NCR Registration Number", type: "text", defaultValue: "NCRDC4086" },
-                        { name: "newCounsellorCompany", label: "Company Name", type: "text", defaultValue: "CLEAR DEBT", span: 2 },
+                        { name: "newCounsellorCompany", label: "Company Name", type: "text", defaultValue: "Debt Counsellors", span: 2 },
                         { name: "newCounsellorPhone", label: "Contact Number", type: "tel", defaultValue: "079 393 2311" },
                         { name: "newCounsellorEmail", label: "Email", type: "email", defaultValue: "info@clear-debt.co.za" },
                     ],
@@ -382,7 +382,7 @@ const powerOfAttorney: FormDefinition = {
     title: "Power of Attorney",
     heading: "Power of Attorney",
     intro: "Appoint a lawful agent to manage and transact business on behalf of the principal in the Republic of South Africa.",
-    summary: "Grant Clear Debt a power of attorney to act on behalf of the principal.",
+    summary: "Grant Debt Counsellors a power of attorney to act on behalf of the principal.",
     submitLabel: "Submit POA",
     successTitle: "Power of Attorney submitted",
     successMessage: "Your power of attorney has been recorded and your executed copy is ready.",
@@ -412,7 +412,7 @@ const powerOfAttorney: FormDefinition = {
             badge: "2",
             title: "Agent",
             navLabel: "Agent",
-            description: "The appointed lawful agent (typically Clear Debt or its representative).",
+            description: "The appointed lawful agent (typically Debt Counsellors or its representative).",
             blocks: [
                 {
                     kind: "fields",

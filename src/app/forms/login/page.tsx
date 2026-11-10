@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { safeNext } from "@/lib/auth";
 import AuthForm from "@/components/portal/AuthForm";
 
-export const metadata: Metadata = { title: "Sign in — Clear Debt" };
+export const metadata: Metadata = { title: "Sign in — Debt Counsellors" };
 
 const ERRORS: Record<string, string> = {
     link: "That link is invalid or has expired. Please try again.",

@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
-import logoImage from "@/assets/images/logo.jpeg";
+import logoImage from "@/assets/images/celestial.svg";
 import Link from "next/link";
 import "./staggeredmenu.css";
 export interface StaggeredMenuItem {
@@ -684,7 +684,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                         >
                             <Image
                                 src={logo ?? logoImage}
-                                alt={logo?.alt ?? "Clear Debt logo"}
+                                alt={logo?.alt ?? "Debt Counsellors logo"}
                                 className="size-24 rounded-full object-cover"
                             />{" "}
                         </Link>

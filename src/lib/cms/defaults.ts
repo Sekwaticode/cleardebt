@@ -5,7 +5,7 @@
 import type { StaticImageData } from "next/image";
 import type { MediaImage } from "./types";
 
-import logoImage from "@/assets/images/logo.jpeg";
+import logoImage from "@/assets/images/celestial.svg";
 import ticker1 from "@/assets/images/1-removebg-preview.png";
 import ticker2 from "@/assets/images/2-removebg-preview.png";
 import ticker3 from "@/assets/images/3-removebg-preview.png";
@@ -60,9 +60,9 @@ export const DEFAULT_CONTENT = {
     },
 
     introduction: {
-        tag: "Introducing Clear Debt",
-        image: img(logoImage, "Clear Debt"),
-        leadText: "At Clear Debt, we help South Africans",
+        tag: "Introducing Debt Counsellors",
+        image: img(logoImage, "Debt Counsellors"),
+        leadText: "At Debt Counsellors, we help South Africans",
         revealText:
             "legally and effectively clear their debt records. From removing outdated or unlawful listings to providing expert credit advice, our goal is to restore your financial freedom and empower you to move forward with financial confidence.",
         closingText: "We're here to help.",
@@ -168,13 +168,13 @@ export const DEFAULT_CONTENT = {
             {
                 name: "Sarah M.",
                 location: "Johannesburg",
-                review: "Clear Debt helped me regain control of my finances. The process was simple and the team supported me every step of the way.",
+                review: "Debt Counsellors helped me regain control of my finances. The process was simple and the team supported me every step of the way.",
                 image: img(testimonial1, "Sarah M."),
             },
             {
                 name: "David K.",
                 location: "Cape Town",
-                review: "I was overwhelmed by debt, but Clear Debt negotiated affordable repayments that changed my life.",
+                review: "I was overwhelmed by debt, but Debt Counsellors negotiated affordable repayments that changed my life.",
                 image: img(testimonial2, "David K."),
             },
             {
@@ -192,13 +192,13 @@ export const DEFAULT_CONTENT = {
             {
                 name: "Marco S.",
                 location: "Bloemfontein",
-                review: "Excellent service from start to finish. I highly recommend Clear Debt to anyone struggling financially.",
+                review: "Excellent service from start to finish. I highly recommend Debt Counsellors to anyone struggling financially.",
                 image: img(testimonial5, "Marco S."),
             },
             {
                 name: "Jason R.",
                 location: "Port Elizabeth",
-                review: "Thanks to Clear Debt I can finally budget properly and plan for my future again.",
+                review: "Thanks to Debt Counsellors I can finally budget properly and plan for my future again.",
                 image: img(testimonial6, "Jason R."),
             },
         ],
@@ -212,8 +212,8 @@ export const DEFAULT_CONTENT = {
             after: "and start your journey to financial freedom now!",
         },
         form: {
-            logo: img(logoImage, "Clear Debt logo"),
-            title: "Clear Debt",
+            logo: img(logoImage, "Debt Counsellors logo"),
+            title: "Debt Counsellors",
             subtitle: "Book a convenient time with our team in just a few clicks.",
             servicesHeading: "Choose your services",
             servicesHelp: "Tick all that you are interested in.",
@@ -233,7 +233,7 @@ export const DEFAULT_CONTENT = {
             buttonText: "Book appointment",
             successTitle: "Appointment requested!",
             successMessage:
-                "Thank you for booking with Clear Debt. A member of our team will be in touch shortly to confirm your appointment.",
+                "Thank you for booking with Debt Counsellors. A member of our team will be in touch shortly to confirm your appointment.",
         },
         schedule: {
             daysAhead: 7,
@@ -242,7 +242,7 @@ export const DEFAULT_CONTENT = {
             slotMinutes: 30,
             timeZoneLabel: "Johannesburg (SAST)",
         },
-        emailSubject: "New appointment booking from the Clear Debt website",
+        emailSubject: "New appointment booking from the Debt Counsellors website",
     },
 
     faqs: {
@@ -294,7 +294,7 @@ export const DEFAULT_CONTENT = {
         facebookUrl: FACEBOOK_URL,
         tiktokUrl: TIKTOK_URL,
         whatsappUrl: WHATSAPP_URL,
-        logo: img(logoImage, "Clear Debt logo"),
+        logo: img(logoImage, "Debt Counsellors logo"),
         registration: "NCRDC4086",
         copyright: "© Copyright 2026 Sekwaticode. All Rights Reserved.",
     },
@@ -347,7 +347,7 @@ export const DEFAULT_CONTENT = {
     },
 
     staggeredMenu: {
-        logo: img(logoImage, "Clear Debt logo"),
+        logo: img(logoImage, "Debt Counsellors logo"),
         menuText: "Menu",
         closeText: "Close",
         items: [

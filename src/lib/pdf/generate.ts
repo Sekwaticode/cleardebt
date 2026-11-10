@@ -320,7 +320,7 @@ let logoCache: Uint8Array | null | undefined;
 async function loadLogo(): Promise<Uint8Array | null> {
     if (logoCache !== undefined) return logoCache;
     try {
-        logoCache = new Uint8Array(await readFile(path.join(process.cwd(), "src/assets/images/logo.jpeg")));
+        logoCache = new Uint8Array(await readFile(path.join(process.cwd(), "src/assets/images/celestial.svg")));
     } catch {
         logoCache = null; // PDF still renders, just without the logo.
     }
@@ -339,7 +339,7 @@ export async function renderSubmissionPdf({ def, submission, signatures }: Rende
     doc.setTitle(`${def.heading} — ${submission.reference}`);
     doc.setAuthor(COMPANY.name);
     doc.setSubject(def.title);
-    doc.setCreator("Clear Debt forms portal");
+    doc.setCreator("Debt Counsellors forms portal");
     doc.setCreationDate(new Date());
 
     const regular = await doc.embedFont(StandardFonts.Helvetica);

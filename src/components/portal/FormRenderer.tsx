@@ -402,14 +402,14 @@ function BlockView({ block, values, errors, setValue, onBlur, pads, existingSign
                                     <span className="cd-label">{sig.label}</span>
                                     <div className="cd-signature-block">
                                         <div className="cd-signature-title">
-                                            <span>Signed by Clear Debt</span>
+                                            <span>Signed by Debt Counsellors</span>
                                         </div>
                                         {existingSignatures[sig.name] ? (
                                             // eslint-disable-next-line @next/next/no-img-element
                                             <img className="cd-signature-img" src={existingSignatures[sig.name]} alt={sig.label} />
                                         ) : (
                                             <div className="cd-empty" style={{ padding: "48px 12px" }}>
-                                                Clear Debt will sign here once your form is received.
+                                                Debt Counsellors will sign here once your form is received.
                                             </div>
                                         )}
                                     </div>
@@ -484,7 +484,7 @@ function FieldView({ field, value, error, setValue, onBlur }: FieldProps) {
         return (
             <div className={cls}>
                 <label htmlFor={id}>{field.label}</label>
-                <input id={id} className="cd-input" type="text" value={shown} placeholder="Completed by Clear Debt" readOnly tabIndex={-1} aria-readonly />
+                <input id={id} className="cd-input" type="text" value={shown} placeholder="Completed by Debt Counsellors" readOnly tabIndex={-1} aria-readonly />
             </div>
         );
     }

@@ -108,7 +108,7 @@ export default async function SubmissionsPage({ searchParams }: { searchParams: 
             <div className="cd-admin-head">
                 <div>
                     <h1>Submissions</h1>
-                    <p>Search, filter and review every form submitted to Clear Debt.</p>
+                    <p>Search, filter and review every form submitted to Debt Counsellors.</p>
                 </div>
             </div>
 

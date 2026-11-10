@@ -4,7 +4,7 @@ import "@/styles/cms.css";
 import { ToastProvider } from "@/components/portal/Toast";
 
 export const metadata: Metadata = {
-    title: "Admin — Clear Debt",
+    title: "Admin — Debt Counsellors",
     robots: { index: false, follow: false },
 };
 

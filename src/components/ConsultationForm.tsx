@@ -143,7 +143,7 @@ export default function ConsultationForm({ content = DEFAULT_CONTENT.contact }: 
         >
             <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
             <input type="hidden" name="subject" value={content.emailSubject} />
-            <input type="hidden" name="from_name" value="Clear Debt Website" />
+            <input type="hidden" name="from_name" value="Debt Counsellors Website" />
             {/* Honeypot spam protection */}
             <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 

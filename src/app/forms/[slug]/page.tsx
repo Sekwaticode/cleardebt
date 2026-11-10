@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
     const def = getDefinitionBySlug(params.slug);
-    return { title: def ? `${def.title} — Clear Debt` : "Form — Clear Debt" };
+    return { title: def ? `${def.title} — Debt Counsellors` : "Form — Debt Counsellors" };
 }
 
 export default async function FormPage({ params, searchParams }: { params: { slug: string }; searchParams: { id?: string } }) {

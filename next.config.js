@@ -27,8 +27,8 @@ const nextConfig = {
     // The PDF generator reads the logo from disk at runtime; make sure it
     // ships with the serverless bundle when deployed.
     outputFileTracingIncludes: {
-      "/api/**/*": ["./src/assets/images/logo.jpeg"],
-      "/forms/**/*": ["./src/assets/images/logo.jpeg"],
+      "/api/**/*": ["./src/assets/images/celestial.svg"],
+      "/forms/**/*": ["./src/assets/images/celestial.svg"],
     },
   },
   async headers() {

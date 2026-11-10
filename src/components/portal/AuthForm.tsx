@@ -8,11 +8,11 @@ import { createClient } from "@/lib/supabase/client";
 type Mode = "login" | "signup" | "forgot" | "reset" | "admin";
 
 const COPY: Record<Mode, { title: string; subtitle: string; cta: string }> = {
-    login: { title: "Sign in", subtitle: "Sign in to complete, save and download your Clear Debt forms.", cta: "Sign in" },
+    login: { title: "Sign in", subtitle: "Sign in to complete, save and download your Debt Counsellors forms.", cta: "Sign in" },
     signup: { title: "Create your account", subtitle: "An account keeps your forms private and lets you download your signed copies.", cta: "Create account" },
     forgot: { title: "Reset your password", subtitle: "Enter your email and we'll send you a link to choose a new password.", cta: "Send reset link" },
     reset: { title: "Choose a new password", subtitle: "Enter a new password for your account.", cta: "Update password" },
-    admin: { title: "Admin sign in", subtitle: "Restricted area. Authorised Clear Debt staff only.", cta: "Sign in" },
+    admin: { title: "Admin sign in", subtitle: "Restricted area. Authorised Debt Counsellors staff only.", cta: "Sign in" },
 };
 
 function friendlyError(message: string): string {
@@ -182,7 +182,7 @@ export default function AuthForm({ mode, next, initialError }: { mode: Mode; nex
 
                     {mode === "login" && (
                         <p className="cd-auth-foot">
-                            New to Clear Debt? <Link href={`/forms/signup${nextQuery}`}>Create an account</Link>
+                            New to Debt Counsellors? <Link href={`/forms/signup${nextQuery}`}>Create an account</Link>
                         </p>
                     )}
                     {mode === "signup" && (

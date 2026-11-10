@@ -19,7 +19,7 @@ const EVENT_LABELS: Record<string, string> = {
     pdf_generated: "PDF generated",
     pdf_regenerated: "PDF regenerated",
     pdf_failed: "PDF generation failed",
-    admin_section_updated: "Clear Debt section updated",
+    admin_section_updated: "Debt Counsellors section updated",
 };
 
 export default async function SubmissionDetail({ params }: { params: { id: string } }) {
@@ -111,7 +111,7 @@ export default async function SubmissionDetail({ params }: { params: { id: strin
                         <section className="cd-card">
                             <div className="cd-card-header">
                                 <div>
-                                    <h2>Clear Debt section</h2>
+                                    <h2>Debt Counsellors section</h2>
                                     <p>Only admins can complete this part. Saving updates the client&apos;s PDF.</p>
                                 </div>
                             </div>

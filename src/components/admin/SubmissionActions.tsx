@@ -175,7 +175,7 @@ export function DeleteSubmission({ id, reference }: { id: string; reference: str
     );
 }
 
-/** The parts of a form only Clear Debt completes, e.g. the representative's name and signature. */
+/** The parts of a form only Debt Counsellors completes, e.g. the representative's name and signature. */
 export function ClearDebtSection({
     id,
     fields,
@@ -219,7 +219,7 @@ export function ClearDebtSection({
             }
             if (!res.ok) {
                 setErrors(body.fieldErrors ?? {});
-                return toast(body.error ?? "Couldn't save the Clear Debt section.", "error");
+                return toast(body.error ?? "Couldn't save the Debt Counsellors section.", "error");
             }
             setErrors({});
             Object.values(pads.current).forEach((p) => p?.markClean());
@@ -227,7 +227,7 @@ export function ClearDebtSection({
             toast(
                 submitted
                     ? body.pdfReady
-                        ? "Saved. The PDF now includes Clear Debt's details."
+                        ? "Saved. The PDF now includes Debt Counsellors's details."
                         : "Saved, but the PDF couldn't be rebuilt. Use “Regenerate PDF” to try again."
                     : "Saved.",
                 body.pdfReady || !submitted ? "success" : "error",
@@ -289,7 +289,7 @@ export function ClearDebtSection({
             <div className="cd-actions">
                 <button type="button" className="cd-btn cd-btn-primary" onClick={save} disabled={busy || !changed}>
                     {busy && <span className="cd-spinner" aria-hidden />}
-                    Save Clear Debt section
+                    Save Debt Counsellors section
                 </button>
             </div>
         </div>

@@ -1,5 +1,5 @@
 -- =====================================================================
--- Clear Debt — website content management (CMS)
+-- Debt Counsellors — website content management (CMS)
 --
 --   site_content            one row per editable section; `content` holds
 --                           ONLY the texts, links and media the schema in

@@ -81,7 +81,7 @@ export const SECTIONS: SectionDef[] = [
         name: "Introduction",
         group: "Sections",
         file: "src/sections/Introduction.tsx",
-        description: "The scroll-revealed “Introducing Clear Debt” statement with the logo.",
+        description: "The scroll-revealed “Introducing Debt Counsellors” statement with the logo.",
         usedOn: [HOME, ABOUT],
         fields: [
             tag(),

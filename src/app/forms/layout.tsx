@@ -6,7 +6,7 @@ import { ToastProvider } from "@/components/portal/Toast";
 import SignOutButton from "@/components/portal/SignOutButton";
 
 export const metadata: Metadata = {
-    title: "Client Forms — Clear Debt",
+    title: "Client Forms — Debt Counsellors",
     robots: { index: false, follow: false },
 };
 
@@ -25,7 +25,7 @@ export default async function FormsLayout({ children }: { children: React.ReactN
             <ToastProvider>
                 <div className="cd-band">
                     <div className="cd-container cd-band-row">
-                        <span className="cd-eyebrow">Clear Debt · Client Portal</span>
+                        <span className="cd-eyebrow">Debt Counsellors · Client Portal</span>
                         {session && (
                             <div className="cd-userchip">
                                 <Link href="/forms">My forms</Link>
@@ -41,7 +41,7 @@ export default async function FormsLayout({ children }: { children: React.ReactN
                 </div>
                 <main className="cd-container cd-portal-main">{children}</main>
                 <footer className="cd-container cd-portal-footer">
-                    © {new Date().getFullYear()} Clear Debt (Pty) Ltd · Your information is processed in line with the Protection of Personal Information Act (POPIA).
+                    © {new Date().getFullYear()} Debt Counsellors (Pty) Ltd · Your information is processed in line with the Protection of Personal Information Act (POPIA).
                 </footer>
             </ToastProvider>
         </div>

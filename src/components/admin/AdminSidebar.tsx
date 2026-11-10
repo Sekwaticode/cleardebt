@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import logo from "@/assets/images/logo.jpeg";
+import logo from "@/assets/images/celestial.svg";
 import SignOutButton from "@/components/portal/SignOutButton";
 
 const NAV = [
@@ -40,7 +40,7 @@ export default function AdminSidebar({ email }: { email: string }) {
             <div className="cd-sidebar-brand">
                 <Image src={logo} alt="" width={34} height={34} />
                 <div>
-                    <strong>Clear Debt</strong>
+                    <strong>Debt Counsellors</strong>
                     <span>Admin console</span>
                 </div>
             </div>
