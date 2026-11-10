@@ -7,6 +7,7 @@ import Integrations from "@/sections/Integrations";
 import Contacts from "@/sections/Contact"
 import Faqs from "@/sections/Faqs";
 import Footer from "@/sections/Footer";
+import Team from "@/sections/Team/Team.jsx";
 import { getSiteContent } from "@/lib/cms/content";
 
 // Rebuilt immediately when content is published in the admin; this is a safety net.
@@ -26,6 +27,7 @@ export default async function Home() {
             <Integrations content={content.integrations} />
             <Contacts content={content.contact} />
             <Faqs content={content.faqs} />
+            <Team content={content.team}/>
             <Footer content={content.footer} />
             </main>
         </>
