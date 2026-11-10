@@ -33,7 +33,7 @@ export default function Hero({
         <section className="relative py-24 lg:py-32 overflow-x-clip grid lg:grid-cols-[1.05fr_1fr] items-center lg:gap-8">
             {/* Background effects */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-0">
-                <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[radial-gradient(60%_80%_at_30%_100%,rgba(124,58,237,0.45),transparent_70%)]" />
+                {/* <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[radial-gradient(60%_80%_at_30%_100%,rgba(124,58,237,0.45),transparent_70%)]" /> */}
                 <div className="absolute right-[-10%] top-1/2 size-[640px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(147,51,234,0.45),rgba(79,70,229,0.15)_45%,transparent_70%)] blur-2xl" />
                 <div className="absolute right-[2%] top-1/2 hidden size-[560px] -translate-y-1/2 rounded-full border border-fuchsia-400/40 shadow-[0_0_60px_rgba(168,85,247,0.55),inset_0_0_60px_rgba(168,85,247,0.35)] lg:block" />
                 <div className="absolute right-[8%] top-[18%] hidden h-px w-[420px] rotate-[-8deg] bg-gradient-to-r from-transparent via-fuchsia-400/70 to-transparent blur-[1px] lg:block" />

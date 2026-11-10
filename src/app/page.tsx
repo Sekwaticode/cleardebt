@@ -10,7 +10,6 @@ import Footer from "@/sections/Footer";
 import Team from "@/sections/Team/Team.jsx";
 import { getSiteContent } from "@/lib/cms/content";
 
-// Rebuilt immediately when content is published in the admin; this is a safety net.
 export const revalidate = 600;
 
 export default async function Home() {
