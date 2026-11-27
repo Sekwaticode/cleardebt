@@ -11,18 +11,18 @@ footer .container {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 20px;
-  color: #fff;
+  color: #171717;
 
 }
 
 footer .container .sec h2 {
-  color: #fff;
+  color: #171717;
   font-weight: 600;
   margin-bottom: 15px;
 }
 
 footer .container .sec p {
-  color: #fff;
+  color: #171717;
   line-height: 1.6;
 }
 
@@ -52,7 +52,7 @@ footer .container .sci li a {
 }
 
 footer .container .sci li a i {
-  color: #fff;
+  color: #171717;
   font-size: 18px;
 }
 
@@ -63,7 +63,7 @@ footer .container .quickLinks ul {
 }
 
 footer .container .quickLinks ul li a {
-  color: #ccc;
+  color: #525252;
   text-decoration: none;
   margin-bottom: 10px;
   display: inline-block;
@@ -82,12 +82,12 @@ footer .container .contact .info li {
 }
 
 footer .container .contact .info li span {
-  color: #ccc;
+  color: #525252;
   font-size: 20px;
 }
 
 footer .container .contact .info li a {
-  color: #ccc;
+  color: #525252;
   text-decoration: none;
 }
 
@@ -96,8 +96,8 @@ footer .container .contact .info li a {
   width: 100%;
   padding: 20px;
   text-align: center;
-  color: #ccc;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  color: #525252;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* ================= RESPONSIVE ================= */

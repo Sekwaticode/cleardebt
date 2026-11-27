@@ -320,7 +320,7 @@ const counsellorTransfer: FormDefinition = {
                     kind: "fields",
                     fields: [
                         { name: "newCounsellorName", label: "Debt Counsellor Name", type: "text", defaultValue: "Tasmin Ramkissoon" },
-                        { name: "newCounsellorNcr", label: "NCR Registration Number", type: "text", defaultValue: "NCRDC4086" },
+                        { name: "newCounsellorNcr", label: "NCR Registration Number", type: "text", defaultValue: "NCRDC1234" },
                         { name: "newCounsellorCompany", label: "Company Name", type: "text", defaultValue: "Debt Counsellors", span: 2 },
                         { name: "newCounsellorPhone", label: "Contact Number", type: "tel", defaultValue: "079 393 2311" },
                         { name: "newCounsellorEmail", label: "Email", type: "email", defaultValue: "info@clear-debt.co.za" },

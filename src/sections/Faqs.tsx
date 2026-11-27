@@ -22,7 +22,7 @@ export default function Faqs({ content = DEFAULT_CONTENT.faqs }: { content?: Faq
                     {content.items.map((faq, faqIndex) => (
                         <div
                             key={faqIndex}
-                            className="bg-neutral-900 rounded-2xl border border-white/10 p-6"
+                            className="bg-white rounded-2xl border border-neutral-200 shadow-sm p-6"
                         >
                             <div
                                 className="flex justify-between items-center"
@@ -40,7 +40,7 @@ export default function Faqs({ content = DEFAULT_CONTENT.faqs }: { content?: Faq
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     className={twMerge(
-                                        "feather feather-plus text-fuchsia-400 flex-shrink-0 transition duration-300",
+                                        "feather feather-plus text-fuchsia-600 flex-shrink-0 transition duration-300",
                                         selectedIndex === faqIndex &&
                                             "rotate-45",
                                     )}
@@ -60,7 +60,7 @@ export default function Faqs({ content = DEFAULT_CONTENT.faqs }: { content?: Faq
                                         exit={{ height: 0, marginTop: 0 }}
                                         className={twMerge("overflow-hidden")}
                                     >
-                                        <p className="text-white/50 whitespace-pre-line">
+                                        <p className="text-neutral-600 whitespace-pre-line">
                                             {faq.answer}
                                         </p>
                                     </motion.div>

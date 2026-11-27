@@ -1395,3 +1395,8 @@ body:has(.cd-admin-area) .staggered-menu-wrapper {
         flex: 1;
     }
 }
+
+/* The logo SVG is black for the light public site; keep it white on the dark sidebar. */
+.cd-sidebar-brand img {
+    filter: invert(1);
+}

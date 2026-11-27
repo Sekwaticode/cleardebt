@@ -48,7 +48,7 @@ export default function Features({ content = DEFAULT_CONTENT.features }: { conte
                                 />
                             </Avatar>
                             <Avatar className="-ml-6 border-transparent group-hover:border-indigo-500 transition">
-                                <div className="size-full bg-neutral-700 rounded-full inline-flex items-center justify-center relative">
+                                <div className="size-full bg-neutral-200 rounded-full inline-flex items-center justify-center relative">
                                     <Image
                                         src={communityCard.avatar4}
                                         alt={communityCard.avatar4.alt}
@@ -57,7 +57,7 @@ export default function Features({ content = DEFAULT_CONTENT.features }: { conte
                                     {Array.from({ length: 3 }).map((_, i) => (
                                         <span
                                             key={i}
-                                            className="size-1.5 rounded-full bg-white inline-flex"
+                                            className="size-1.5 rounded-full bg-neutral-500 inline-flex"
                                         ></span>
                                     ))}
                                 </div>
@@ -71,9 +71,9 @@ export default function Features({ content = DEFAULT_CONTENT.features }: { conte
                         className="group"
                     >
                         <div className="aspect-video flex items-center justify-center">
-                            <p className="text-4xl font-extrabold text-white/20 group-hover:text-white/10 transition duration-500 text-center">
+                            <p className="text-4xl font-extrabold text-neutral-900/20 group-hover:text-neutral-900/10 transition duration-500 text-center">
                                 {supportCard.text}{" "}
-                                <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative">
+                                <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent relative">
                                     <span>{supportCard.highlight}</span>
                                     <video
                                         src={supportCard.video}

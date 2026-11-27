@@ -32,6 +32,7 @@ export default function LogoTicker({ content = DEFAULT_CONTENT.logoTicker }: { c
                                         key={j}
                                         src={logo.image}
                                         alt={logo.image.alt}
+                                        className="brightness-0 opacity-60"
                                     />
                                 ))}
                             </Fragment>

@@ -66,7 +66,8 @@ const Footer = ({ content = DEFAULT_CONTENT.footer }: { content?: FooterContent 
                         <ul className="sci">
                             {socials.map((s) => (
                                 <li key={s.label}>
-                                    <a href={s.href} aria-label={s.label}>
+                                    {/* Demo site: social icons are shown but deliberately not linked. */}
+                                    <a aria-label={s.label} aria-disabled="true" className="cursor-default">
                                         {s.icon}
                                     </a>
                                 </li>
@@ -77,9 +78,9 @@ const Footer = ({ content = DEFAULT_CONTENT.footer }: { content?: FooterContent 
                         <Image
                             src={content.logo}
                             alt={content.logo.alt}
-                            className="size-24 rounded-full object-cover"
+                            className="size-24 object-contain"
                         />
-                        <h2 className="text-white/50">{content.registration}</h2>
+                        <h2 className="text-neutral-500">{content.registration}</h2>
                     </div>
                 </div>
             </footer>

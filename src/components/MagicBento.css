@@ -1,13 +1,13 @@
 :root {
   --hue: 27;
   --sat: 69%;
-  --white: hsl(0, 0%, 100%);
+  --white: #171717;
   --purple-primary: rgba(132, 0, 255, 1);
   --purple-glow: rgba(132, 0, 255, 0.2);
   --purple-border: rgba(132, 0, 255, 0.8);
-  --border-color: #2F293A;
-  --background-dark: #120F17;
-  color-scheme: light dark;
+  --border-color: #E9E3F5;
+  --background-dark: #FFFFFF;
+  color-scheme: light;
 }
 
 .card-grid {
@@ -43,7 +43,7 @@
 
 .magic-bento-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(76, 29, 149, 0.12);
 }
 
 .magic-bento-card__header,
@@ -176,7 +176,7 @@
 
 .magic-bento-card--border-glow:hover {
   box-shadow:
-    0 4px 20px rgba(46, 24, 78, 0.4),
+    0 4px 20px rgba(76, 29, 149, 0.15),
     0 0 30px var(--purple-glow);
 }
 
@@ -205,7 +205,7 @@
 
 /* Global spotlight styles */
 .global-spotlight {
-  mix-blend-mode: screen;
+  mix-blend-mode: multiply;
   will-change: transform, opacity;
   z-index: 200 !important;
   pointer-events: none;

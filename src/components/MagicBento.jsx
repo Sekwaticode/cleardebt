@@ -12,7 +12,7 @@ const DEFAULT_PARTICLE_COUNT = 12;
 const DEFAULT_SPOTLIGHT_RADIUS = 300;
 const DEFAULT_GLOW_COLOR = '132, 0, 255';
 const MOBILE_BREAKPOINT = 768;
-const CARD_COLOR = '#120F17';
+const CARD_COLOR = '#FFFFFF';
 
 // Cards 3 and 4 show an interactive component instead of their title/description.
 // Texts come from the CMS (magicBento + stepper); colours and components stay fixed here.

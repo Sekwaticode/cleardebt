@@ -6,11 +6,11 @@ import type { StaticImageData } from "next/image";
 import type { MediaImage } from "./types";
 
 import logoImage from "@/assets/images/celestial.svg";
+import logoMark from "@/assets/images/celestial-mark.svg";
 import ticker1 from "@/assets/images/1-removebg-preview.png";
 import ticker2 from "@/assets/images/2-removebg-preview.png";
 import ticker3 from "@/assets/images/3-removebg-preview.png";
 import ticker4 from "@/assets/images/4-removebg-preview.png";
-import ticker5 from "@/assets/images/5-removebg-preview.png";
 import avatar1 from "@/assets/images/avatar-ashwin-santiago.jpg";
 import avatar2 from "@/assets/images/avatar-lula-meyers.jpg";
 import avatar3 from "@/assets/images/avatar-florence-shaw.jpg";
@@ -21,10 +21,9 @@ import testimonial3 from "@/assets/images/Testimonial-3.png";
 import testimonial4 from "@/assets/images/Testimonial-4.png";
 import testimonial5 from "@/assets/images/Testimonial-5.png";
 import testimonial6 from "@/assets/images/Testimonial-6.png";
-import teamLihle from "@/assets/images/team-lihle.jpg";
-import teamTasmin from "@/assets/images/team-tasmin.jpg";
-import teamZelda from "@/assets/images/team-zelda.jpg";
-import teamAngie from "@/assets/images/team-angie.jpg";
+import teamTebogo from "@/assets/images/team1.png";
+import teamMark from "@/assets/images/team2.png";
+import teamZoe from "@/assets/images/team3.png";
 
 const img = (image: StaticImageData, alt: string): MediaImage => ({
     src: image.src,
@@ -55,7 +54,6 @@ export const DEFAULT_CONTENT = {
             { image: img(ticker2, "Acme Corp") },
             { image: img(ticker3, "Echo Valley") },
             { image: img(ticker4, "Pulse") },
-            { image: img(ticker5, "Outside") },
         ],
     },
 
@@ -294,8 +292,8 @@ export const DEFAULT_CONTENT = {
         facebookUrl: FACEBOOK_URL,
         tiktokUrl: TIKTOK_URL,
         whatsappUrl: WHATSAPP_URL,
-        logo: img(logoImage, "Debt Counsellors logo"),
-        registration: "NCRDC4086",
+        logo: img(logoMark, "Debt Counsellors logo"),
+        registration: "NCRDC1234",
         copyright: "© Copyright 2026 Sekwaticode. All Rights Reserved.",
     },
 
@@ -304,41 +302,31 @@ export const DEFAULT_CONTENT = {
         heading: { before: "Our Team of", highlight: "expert", after: "debt relief specialists" },
         members: [
             {
-                name: "Lihle",
+                name: "Tebogo",
                 role: "Debt Specialist",
                 description:
                     "Helps clients understand debt review, create affordable repayment plans, and take the first step toward financial freedom.",
-                image: img(teamLihle, "Lihle"),
+                image: img(teamTebogo, "Tebogo"),
                 instagramUrl: "#",
                 whatsappUrl: "#",
                 linkedinUrl: "#",
             },
             {
-                name: "Tasmin",
+                name: "Mark",
                 role: "Debt Counsellor",
                 description:
                     "Provides compassionate guidance, assesses financial situations, and supports clients throughout every stage of debt review.",
-                image: img(teamTasmin, "Tasmin"),
+                image: img(teamMark, "Mark"),
                 instagramUrl: "#",
                 whatsappUrl: "#",
                 linkedinUrl: "#",
             },
             {
-                name: "Zelda",
+                name: "Zoe",
                 role: "Marketing Manager",
                 description:
                     "Leads marketing initiatives, builds brand awareness, and connects more South Africans with trusted debt relief solutions.",
-                image: img(teamZelda, "Zelda"),
-                instagramUrl: "#",
-                whatsappUrl: "#",
-                linkedinUrl: "#",
-            },
-            {
-                name: "Angie",
-                role: "Debt Advisor",
-                description:
-                    "Works closely with clients to explain available options and recommend practical solutions for managing outstanding debt.",
-                image: img(teamAngie, "Angie"),
+                image: img(teamZoe, "Zoe"),
                 instagramUrl: "#",
                 whatsappUrl: "#",
                 linkedinUrl: "#",
@@ -347,7 +335,7 @@ export const DEFAULT_CONTENT = {
     },
 
     staggeredMenu: {
-        logo: img(logoImage, "Debt Counsellors logo"),
+        logo: img(logoMark, "Debt Counsellors logo"),
         menuText: "Menu",
         closeText: "Close",
         items: [
