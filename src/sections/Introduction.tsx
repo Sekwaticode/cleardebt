@@ -58,21 +58,21 @@ export default function Introduction({ content = DEFAULT_CONTENT.introduction }:
                                 <span>
                                     {content.leadText}
                                 </span>{" "}
-                                <span className="text-white/15">
+                                <span className="text-neutral-900/15">
                                     {words.map((word, wordIndex) => (
                                         <span
                                             key={wordIndex}
                                             className={twMerge(
-                                                "transition duration-500 text-white/15",
+                                                "transition duration-500 text-neutral-900/15",
                                                 wordIndex < currentWord &&
-                                                    "text-white",
+                                                    "text-neutral-900",
                                             )}
                                         >
                                             {`${word} `}
                                         </span>
                                     ))}
                                 </span>
-                                <span className="text-fuchsia-400 block mt-6">
+                                <span className="text-fuchsia-600 block mt-6">
                                     {content.closingText}
                                 </span>
                             </div>

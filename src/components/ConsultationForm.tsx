@@ -43,12 +43,12 @@ const formatFullDate = (date: Date) =>
     date.toLocaleDateString("en-ZA", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 
 const pillBase =
-    "rounded-full border border-white/15 text-white transition hover:border-fuchsia-400/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400";
-const pillSelected = "border-purple-700 bg-purple-700 hover:border-purple-700";
+    "rounded-full border border-neutral-200 text-neutral-900 transition hover:border-fuchsia-500/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400";
+const pillSelected = "border-purple-700 bg-purple-700 text-white hover:border-purple-700";
 const inputClasses =
-    "w-full h-12 rounded-full border border-white/15 bg-transparent px-4 text-white placeholder:text-white/40 outline-none transition focus:border-fuchsia-400";
-const labelClasses = "block text-sm font-semibold text-white mb-2";
-const headingClasses = "text-base font-semibold text-white mb-3";
+    "w-full h-12 rounded-full border border-neutral-200 bg-transparent px-4 text-neutral-900 placeholder:text-neutral-400 outline-none transition focus:border-fuchsia-400";
+const labelClasses = "block text-sm font-semibold text-neutral-900 mb-2";
+const headingClasses = "text-base font-semibold text-neutral-900 mb-3";
 
 export default function ConsultationForm({ content = DEFAULT_CONTENT.contact }: { content?: ContactContent }) {
     const { form: text, schedule } = content;
@@ -119,9 +119,9 @@ export default function ConsultationForm({ content = DEFAULT_CONTENT.contact }: 
 
     if (status === "success") {
         return (
-            <div className="max-w-5xl mx-auto rounded-3xl border border-white/15 bg-[#0f1424] p-8 lg:p-12 text-center">
-                <h3 className="text-3xl font-semibold text-white">{text.successTitle}</h3>
-                {text.successMessage && <p className="mt-4 text-white/70 max-w-md mx-auto">{text.successMessage}</p>}
+            <div className="max-w-5xl mx-auto rounded-3xl border border-neutral-200 bg-white/90 backdrop-blur shadow-[0_30px_80px_-40px_rgba(124,58,237,0.45)] p-8 lg:p-12 text-center">
+                <h3 className="text-3xl font-semibold text-neutral-900">{text.successTitle}</h3>
+                {text.successMessage && <p className="mt-4 text-neutral-600 max-w-md mx-auto">{text.successMessage}</p>}
                 <button
                     type="button"
                     onClick={() => setStatus("idle")}
@@ -139,7 +139,7 @@ export default function ConsultationForm({ content = DEFAULT_CONTENT.contact }: 
             action={WEB3FORMS_ENDPOINT}
             method="POST"
             onSubmit={handleSubmit}
-            className="max-w-5xl mx-auto grid overflow-hidden rounded-3xl border border-white/15 bg-[#0f1424] md:grid-cols-2"
+            className="max-w-5xl mx-auto grid overflow-hidden rounded-3xl border border-neutral-200 bg-white/90 backdrop-blur shadow-[0_30px_80px_-40px_rgba(124,58,237,0.45)] md:grid-cols-2"
         >
             <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
             <input type="hidden" name="subject" value={content.emailSubject} />
@@ -148,18 +148,18 @@ export default function ConsultationForm({ content = DEFAULT_CONTENT.contact }: 
             <input type="checkbox" name="botcheck" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
 
             {/* Left column: services, date and time */}
-            <div className="p-6 lg:p-8 border-b border-white/15 md:border-b-0 md:border-r">
+            <div className="p-6 lg:p-8 border-b border-neutral-200 md:border-b-0 md:border-r">
                 <div className="flex items-start gap-4">
                     <Image src={text.logo} alt={text.logo.alt} className="size-14 shrink-0 rounded-xl object-cover" />
                     <div>
-                        <h3 className="text-2xl font-semibold text-white">{text.title}</h3>
-                        <p className="mt-1 text-sm text-white/80">{text.subtitle}</p>
+                        <h3 className="text-2xl font-semibold text-neutral-900">{text.title}</h3>
+                        <p className="mt-1 text-sm text-neutral-600">{text.subtitle}</p>
                     </div>
                 </div>
 
                 <fieldset className="mt-8">
                     <legend className={headingClasses}>{text.servicesHeading}</legend>
-                    {text.servicesHelp && <p className="-mt-2 mb-3 text-sm text-white/60">{text.servicesHelp}</p>}
+                    {text.servicesHelp && <p className="-mt-2 mb-3 text-sm text-neutral-600">{text.servicesHelp}</p>}
                     <div className="grid gap-3">
                         {serviceOptions.map((service) => {
                             const checked = services.includes(service);
@@ -167,7 +167,7 @@ export default function ConsultationForm({ content = DEFAULT_CONTENT.contact }: 
                                 <label
                                     key={service}
                                     className={twMerge(
-                                        "flex cursor-pointer items-center gap-3 rounded-2xl border border-white/15 px-4 py-3 transition hover:border-fuchsia-400/60 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-fuchsia-400",
+                                        "flex cursor-pointer items-center gap-3 rounded-2xl border border-neutral-200 px-4 py-3 transition hover:border-fuchsia-500/60 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-fuchsia-400",
                                         checked && "border-fuchsia-500 bg-fuchsia-500/10 hover:border-fuchsia-500",
                                     )}
                                 >
@@ -177,7 +177,7 @@ export default function ConsultationForm({ content = DEFAULT_CONTENT.contact }: 
                                         onChange={() => toggleService(service)}
                                         className="size-4 shrink-0 accent-fuchsia-500"
                                     />
-                                    <span className="text-sm font-semibold text-white">{service}</span>
+                                    <span className="text-sm font-semibold text-neutral-900">{service}</span>
                                 </label>
                             );
                         })}
@@ -228,31 +228,31 @@ export default function ConsultationForm({ content = DEFAULT_CONTENT.contact }: 
 
             {/* Right column: summary and contact details */}
             <div className="p-6 lg:p-8">
-                <div className="rounded-2xl border border-white/15 p-4 lg:p-5">
-                    <h4 className="text-base font-semibold text-white mb-3">{text.summaryHeading}</h4>
+                <div className="rounded-2xl border border-neutral-200 p-4 lg:p-5">
+                    <h4 className="text-base font-semibold text-neutral-900 mb-3">{text.summaryHeading}</h4>
                     <dl className="grid gap-3 text-sm">
                         <div className="flex justify-between gap-4">
-                            <dt className="text-white/70">{services.length > 1 ? "Services" : "Service"}</dt>
-                            <dd className="text-right font-semibold text-white">
+                            <dt className="text-neutral-600">{services.length > 1 ? "Services" : "Service"}</dt>
+                            <dd className="text-right font-semibold text-neutral-900">
                                 {services.length > 0 ? services.join(", ") : "—"}
                             </dd>
                         </div>
                         <div className="flex justify-between gap-4">
-                            <dt className="text-white/70">Date</dt>
-                            <dd className="font-semibold text-white">{selectedDate ? formatSummaryDate(selectedDate) : "—"}</dd>
+                            <dt className="text-neutral-600">Date</dt>
+                            <dd className="font-semibold text-neutral-900">{selectedDate ? formatSummaryDate(selectedDate) : "—"}</dd>
                         </div>
                         <div className="flex justify-between gap-4">
-                            <dt className="text-white/70">Time</dt>
-                            <dd className="font-semibold text-white">{selectedTime ?? "—"}</dd>
+                            <dt className="text-neutral-600">Time</dt>
+                            <dd className="font-semibold text-neutral-900">{selectedTime ?? "—"}</dd>
                         </div>
                         <div className="flex justify-between gap-4">
-                            <dt className="text-white/70">Time zone</dt>
-                            <dd className="font-semibold text-white">{schedule.timeZoneLabel}</dd>
+                            <dt className="text-neutral-600">Time zone</dt>
+                            <dd className="font-semibold text-neutral-900">{schedule.timeZoneLabel}</dd>
                         </div>
                     </dl>
                 </div>
 
-                <h4 className="mt-8 text-base font-semibold text-white mb-4">{text.detailsHeading}</h4>
+                <h4 className="mt-8 text-base font-semibold text-neutral-900 mb-4">{text.detailsHeading}</h4>
                 <div className="grid gap-4">
                     <div>
                         <label htmlFor="name" className={labelClasses}>Full name</label>
@@ -279,7 +279,7 @@ export default function ConsultationForm({ content = DEFAULT_CONTENT.contact }: 
                 </div>
 
                 {status === "error" && (
-                    <p role="alert" className="mt-4 text-sm text-red-400">{errorMessage}</p>
+                    <p role="alert" className="mt-4 text-sm text-red-600">{errorMessage}</p>
                 )}
 
                 <button
@@ -287,7 +287,7 @@ export default function ConsultationForm({ content = DEFAULT_CONTENT.contact }: 
                     disabled={status === "submitting"}
                     className={twMerge(
                         "mt-6 h-12 w-full rounded-full font-semibold text-white transition",
-                        isComplete ? "bg-purple-700 hover:bg-purple-600" : "bg-[#4a0f4f]",
+                        isComplete ? "bg-purple-700 hover:bg-purple-600" : "bg-purple-300",
                         status === "submitting" && "opacity-60",
                     )}
                 >

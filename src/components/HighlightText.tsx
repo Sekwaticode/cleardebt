@@ -1,7 +1,7 @@
 /** Renders "before <highlight> after", with the highlight in the site's accent colour. */
 export default function HighlightText({
     value,
-    className = "text-fuchsia-400",
+    className = "text-fuchsia-600",
 }: {
     value: { before: string; highlight: string; after: string };
     className?: string;

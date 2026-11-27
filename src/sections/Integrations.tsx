@@ -17,7 +17,7 @@ export default function Integrations({ content = DEFAULT_CONTENT.integrations }:
                             <HighlightText value={content.heading} />
                         </h2>
 
-                        <p className="text-white/50 mt-4 text-lg">
+                        <p className="text-neutral-600 mt-4 text-lg">
                             {content.description}
                         </p>
                     </div>

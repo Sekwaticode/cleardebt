@@ -27,7 +27,7 @@ export default function Services({
                         <HighlightText value={content.heading} />
                     </h2>
 
-                    <p className="text-white/60 text-center mt-6 max-w-xl">
+                    <p className="text-neutral-600 text-center mt-6 max-w-xl">
                         {content.description}
                     </p>
 
@@ -53,7 +53,7 @@ export default function Services({
                         {content.pills.map((feature, i) => (
                             <div
                                 key={i}
-                                className="bg-neutral-900 border border-white/10 inline-flex px-3 md:px-5 py-1.5 md:py-2 rounded-2xl gap-3 items-center hover:scale-105 transition duration-500 group"
+                                className="bg-white border border-neutral-200 shadow-sm inline-flex px-3 md:px-5 py-1.5 md:py-2 rounded-2xl gap-3 items-center hover:scale-105 transition duration-500 group"
                             >
                                 <span className="bg-fuchsia-400 text-neutral-950 size-5 rounded-full inline-flex justify-center items-center text-xl group-hover:rotate-45 transition duration-500">
                                     &#10038;

@@ -30,17 +30,17 @@ export default function CreditScoreProfile({ content = DEFAULT_CONTENT.creditSco
     const scoreGain = SCORE_AFTER - SCORE_BEFORE;
 
     return (
-        <Card className="relative w-full mx-auto flex flex-col items-center space-y-6 overflow-hidden p-6 md:p-8 rounded-3xl border-white/20 bg-white/[0.06] text-white backdrop-blur-2xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.18),0_0_0_1px_rgba(168,85,247,0.25),0_40px_100px_-20px_rgba(124,58,237,0.7)]">
+        <Card className="relative w-full mx-auto flex flex-col items-center space-y-6 overflow-hidden p-6 md:p-8 rounded-3xl border-purple-200 bg-white/75 text-neutral-900 backdrop-blur-2xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_0_0_1px_rgba(168,85,247,0.15),0_40px_100px_-30px_rgba(124,58,237,0.45)]">
             {/* Glass sheen */}
-            <div aria-hidden className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.14] via-transparent to-purple-500/[0.12]" />
-            <div aria-hidden className="pointer-events-none absolute -top-24 -left-24 size-64 rounded-full bg-fuchsia-400/20 blur-3xl" />
+            <div aria-hidden className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-white/60 via-transparent to-purple-500/[0.06]" />
+            <div aria-hidden className="pointer-events-none absolute -top-24 -left-24 size-64 rounded-full bg-fuchsia-300/30 blur-3xl" />
 
             <div className="relative flex w-full items-center justify-between">
                 <div>
-                    <p className="text-sm text-white/50">{content.subtitle}</p>
+                    <p className="text-sm text-neutral-500">{content.subtitle}</p>
                     <h2 className="text-xl font-semibold tracking-tight">{content.title}</h2>
                 </div>
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/15 px-3 py-1 text-sm font-semibold text-emerald-300">
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-3 py-1 text-sm font-semibold text-emerald-700">
                     <FiTrendingUp />
                     {scoreGain >= 0 ? "+" : ""}
                     {scoreGain} pts
@@ -57,6 +57,7 @@ export default function CreditScoreProfile({ content = DEFAULT_CONTENT.creditSco
                 animationDelayPerSegment={0.05}
                 activeLabel={hoveredLabel}
                 onSegmentHover={handleSegmentHover}
+                trackColor="rgba(0, 0, 0, 0.06)"
                 centerContent={
                     <AnimatePresence mode="wait">
                         <motion.div
@@ -69,7 +70,7 @@ export default function CreditScoreProfile({ content = DEFAULT_CONTENT.creditSco
                         >
                             {activeFactor ? (
                                 <>
-                                    <p className="text-sm font-medium text-white/50 max-w-[140px] truncate">
+                                    <p className="text-sm font-medium text-neutral-500 max-w-[140px] truncate">
                                         {activeFactor.label}
                                     </p>
                                     <p className="text-4xl font-bold">{activeFactor.value}%</p>
@@ -79,9 +80,9 @@ export default function CreditScoreProfile({ content = DEFAULT_CONTENT.creditSco
                                 </>
                             ) : (
                                 <>
-                                    <p className="text-sm font-medium text-white/50">{content.scoreLabel}</p>
+                                    <p className="text-sm font-medium text-neutral-500">{content.scoreLabel}</p>
                                     <p className="text-5xl font-bold">{SCORE_AFTER}</p>
-                                    <p className="text-sm text-white/50">
+                                    <p className="text-sm text-neutral-500">
                                         was <span className="line-through">{SCORE_BEFORE}</span> · /{SCORE_MAX}
                                     </p>
                                 </>
@@ -91,7 +92,7 @@ export default function CreditScoreProfile({ content = DEFAULT_CONTENT.creditSco
                 }
             />
 
-            <div className="flex w-full flex-col space-y-1 rounded-2xl border border-white/10 bg-white/[0.04] p-2">
+            <div className="flex w-full flex-col space-y-1 rounded-2xl border border-neutral-200 bg-white/60 p-2">
                 {creditFactors.map((factor, index) => (
                     <motion.div
                         key={factor.label}
@@ -100,7 +101,7 @@ export default function CreditScoreProfile({ content = DEFAULT_CONTENT.creditSco
                         transition={{ delay: 1.2 + index * 0.1, duration: 0.4 }}
                         className={cn(
                             "flex cursor-pointer items-center justify-between rounded-md p-2 transition-colors duration-200",
-                            hoveredLabel === factor.label && "bg-white/10"
+                            hoveredLabel === factor.label && "bg-purple-50"
                         )}
                         onMouseEnter={() => setHoveredLabel(factor.label)}
                         onMouseLeave={() => setHoveredLabel(null)}
@@ -112,19 +113,19 @@ export default function CreditScoreProfile({ content = DEFAULT_CONTENT.creditSco
                             />
                             <span className="text-sm font-medium">{factor.label}</span>
                         </div>
-                        <span className="text-sm font-semibold text-white/50">{factor.rating}</span>
+                        <span className="text-sm font-semibold text-neutral-500">{factor.rating}</span>
                     </motion.div>
                 ))}
             </div>
             </div>
 
-            <div className="relative flex w-full flex-wrap justify-center gap-2 border-t border-white/10 pt-4">
+            <div className="relative flex w-full flex-wrap justify-center gap-2 border-t border-neutral-200 pt-4">
                 {milestones.map((m, i) => (
                     <span
                         key={i}
-                        className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.05] px-3 py-1 text-xs text-white/70"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-white/70 px-3 py-1 text-xs text-neutral-600"
                     >
-                        <FiCheckCircle className="text-emerald-400" />
+                        <FiCheckCircle className="text-emerald-600" />
                         {m}
                     </span>
                 ))}

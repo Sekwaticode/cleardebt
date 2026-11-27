@@ -26,7 +26,7 @@ export default async function RootLayout({
     return (
         <html lang="en">
              
-        <body className={`${inter.variable} font-sans antialiased text-white relative`}>
+        <body className={`${inter.variable} font-sans antialiased text-neutral-900 relative`}>
       <StaggeredMenu
                     position="right"
                     items={menu.items}
@@ -37,22 +37,20 @@ export default async function RootLayout({
                     logo={menu.logo}
                     displaySocials
                     displayItemNumbering
-                    menuButtonColor="#ffffff"
+                    menuButtonColor="#111827"
                     openMenuButtonColor="#111827"
                     changeMenuColorOnOpen
                     isFixed
                     colors={["#1303a0", "#5227FF"]}
                     accentColor="#5227FF"
                   />
+  {/* Light grid background with a soft violet glow */}
   <div
-    className="
-      fixed
-      inset-0
-      -z-10
-      pointer-events-none
-      [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]
-    "
-  />
+    aria-hidden
+    className="absolute inset-0 -z-10 h-full w-full pointer-events-none bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"
+  >
+    <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]" />
+  </div>
 
   {children}
   <div id="JFWebsiteWidget-01a0822240b070008adae7de7855e3e27e1d"></div>
